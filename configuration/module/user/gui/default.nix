@@ -1,0 +1,21 @@
+{
+  imports = [
+    ./discord
+    ./fava
+    ./fuzzel
+    ./gittyup
+    ./gnome-apps
+    ./gns3
+    ./gramps
+    ./keepassxc
+    ./libreoffice
+    ./mpv
+    ./obsidian
+    ./picard
+    ./rofi
+    ./seahorse
+    ./thunderbird
+    ./wofi
+    ./zathura
+  ];
+}

@@ -1,0 +1,23 @@
+{
+  imports = [
+    ./admin
+    ./db
+    ./desktop
+    ./device
+    ./doc
+    ./fs
+    ./game
+    ./home-automation
+    ./keyboard
+    ./media
+    ./network
+    ./script
+    ./service
+    ./shell
+    ./storage
+    ./system
+    ./theme
+    ./virtualisation
+    ./wayland
+  ];
+}

@@ -1,0 +1,1 @@
+WidgetProperties = dict

@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./quickemu
+    ./system
+    ./vagrant
+  ];
+}

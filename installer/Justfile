@@ -1,0 +1,46 @@
+host := 'babs'
+
+# List recipes
+default:
+    just --list -u
+
+# Start wpa_supplicant
+wifi:
+    sudo systemctl start wpa_supplicant
+
+# Run disko to create and mount filesystems
+disks diskName:
+    sudo nix run github:nix-community/disko -- --mode disko \
+        --argstr disk0 {{diskName}} \
+        --root-mountpoint "/mnt" \
+        /etc/disko/disk1-b-r.nix
+
+# Run initial nixos-install
+install:
+    sudo nixos-install
+
+# Copy configuration to /etc/nixos/
+copy_config:
+    #!/run/current-system/sw/bin/sh
+    # Save the initial configuration
+    sudo mkdir /mnt/etc/nixos/initial
+    sudo mv -r /mnt/etc/nixos/*.nix /etc/nixos/initial
+
+    sudo mkdir -p /mnt/etc/nixos
+    sudo cp -r /etc/nixos/configuration /mnt/etc/nixos/
+
+# Build the configuration
+build:
+    #!/run/current-system/sw/bin/sh
+    pushd .
+    cd /etc/nixos/configuration
+    sudo nixos-rebuild build --flake ".#" --impure
+    popd
+
+# Switch to the configuration
+switch:
+    #!/run/current-system/sw/bin/sh
+    pushd .
+    cd /etc/nixos/configuration
+    sudo nixos-rebuild switch --flake ".#" --impure
+    popd

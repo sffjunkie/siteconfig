@@ -1,0 +1,14 @@
+.envrc
+.devenv
+.direnv
+result
+*.save
+__pycache__
+*.pyc
+*.pyo
+*.qcow2
+installer/iso
+installer/vm
+.vscode
+.tox
+.decrypted~*

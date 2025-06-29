@@ -1,0 +1,24 @@
+{
+  imports = [
+    ./audio
+    ./browser
+    ./cli
+    ./desktop
+    ./development
+    ./editor
+    ./game
+    ./gfx
+    ./gui
+    ./keyboard
+    ./media
+    ./music
+    ./script
+    ./service
+    ./shell
+    ./storage
+    ./system
+    ./terminal
+    ./theme
+    ./wayland
+  ];
+}

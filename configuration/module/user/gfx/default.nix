@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./darktable
+    ./gimp
+    ./inkscape
+  ];
+}

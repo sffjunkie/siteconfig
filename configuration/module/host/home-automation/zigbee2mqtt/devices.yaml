@@ -1,0 +1,96 @@
+devices = {
+"0x00158d00054d6a2e" = {
+friendly_name = "Media Room Motion";
+};
+"0x00158d0006d6a9a7" = {
+friendly_name = "Media Room Window";
+};
+"0x00158d0006e3bb15" = {
+friendly_name = "Bathroom Window";
+};
+"0x00158d000323c90c" = {
+friendly_name = "Bedroom Window";
+};
+"0x000d6ffffed187c9" = {
+friendly_name = "Hifi Power";
+};
+"0x00158d00034d84a7" = {
+friendly_name = "Front Door";
+};
+"0x00158d0001e88509" = {
+friendly_name = "Bedroom Switch";
+};
+"0x00158d0005a9e9c5" = {
+friendly_name = "Bedroom Motion";
+};
+"0x00158d000227a714" = {
+friendly_name = "Kitchen Alcove Switch";
+};
+"0x000d6ffffed18f67" = {
+friendly_name = "Reading Lamp";
+};
+"0x000d6ffffe2a54ad" = {
+friendly_name = "Hifi Switch";
+};
+"0x00158d000353ea1e" = {
+friendly_name = "Kitchen Door";
+};
+"0x00158d0006d689f0" = {
+friendly_name = "Dressing Room Window";
+};
+"0x00158d00056bb978" = {
+friendly_name = "Utility Room";
+};
+"0x00158d00059531ef" = {
+friendly_name = "Lounge Motion";
+};
+"0x00158d0002b5976a" = {
+friendly_name = "Node 0 Sensor";
+};
+"0x00158d0002b5a49e" = {
+friendly_name = "Bedroom Sensor";
+};
+"0x00158d0002b6fda5" = {
+friendly_name = "Lounge Sensor";
+};
+"0xd0cf5efffeebfac7" = {
+friendly_name = "Sideboard Remote";
+};
+"0x00158d0006d666a0" = {
+friendly_name = "Garage Door";
+};
+"0x00158d0001e8877a" = {
+friendly_name = "Desk Switch";
+};
+"0x00124b0024c2555c" = {
+friendly_name = "Bedroom TV Power";
+};
+"0x00124b0024c10e65" = {
+friendly_name = "Garage Music Power";
+};
+"0x00124b0024c10d59" = {
+friendly_name = "dewalt";
+};
+"0x086bd7fffe035cc7" = {
+friendly_name = "Utility room left";
+};
+"0x000b3cfffefadfd2" = {
+friendly_name = "Utility room centre";
+};
+"0x00158d000177f1e7" = {
+friendly_name = "Utility room right";
+};
+"0x000d6ffffee46026" = {
+friendly_name = "0x000d6ffffee46026";
+};
+"0x00124b001f69bcc7" = {
+friendly_name = "Lounge ceiling";
+transition = 0;
+};
+"0x00124b0024c07d42" = {
+friendly_name = "Kitchen Alcove Light";
+};
+"0xa4c1384734784c55" = {
+friendly_name = "Kitchen alcove";
+};
+};

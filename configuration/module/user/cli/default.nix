@@ -1,0 +1,36 @@
+{
+  imports = [
+    ./atuin
+    ./bat
+    ./beancount
+    ./bottom
+    ./cava
+    ./dircolors
+    ./exiftool
+    ./fd
+    ./feh
+    ./fzf
+    ./gh
+    ./git
+    ./htmldoc
+    ./htop
+    ./jc
+    ./jq
+    ./just
+    ./khal
+    ./lazydocker
+    ./lazygit
+    ./lsd
+    ./neofetch
+    ./pass
+    ./pulsemixer
+    ./ranger
+    ./ripgrep
+    ./slurm
+    ./starship
+    ./youtube-dl
+    ./yq
+    ./yubikey-manager
+    ./zellij
+  ];
+}

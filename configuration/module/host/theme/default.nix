@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./nord
+    ./papirus
+    ./stylix
+  ];
+}
