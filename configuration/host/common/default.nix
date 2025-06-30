@@ -48,6 +48,13 @@
         echo "Starting repl with nixpkgs from $nixpkgs"
         nix repl --expr "import ''${nixpkgs} {}"
       }
+
+      nps() {
+        arr=( "$@" )
+        IFS=","
+        [ "$#" -gt 1 ] && shellarg="nixpkgs#{"$arr[*]"}" || shellarg="nixpkgs#$1"
+        eval nix shell "$shellarg"
+      }
     '';
   };
 }
