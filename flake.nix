@@ -49,13 +49,6 @@
       self,
       nixpkgs,
       home-manager,
-      nixos-hardware,
-      nix-index,
-      nix-index-database,
-      nixvim,
-      qde,
-      sops-nix,
-      stylix,
       ...
     }@inputs:
     let
@@ -68,8 +61,8 @@
       ];
 
       hostCommonModules = [
-        sops-nix.nixosModules.sops
-        stylix.nixosModules.stylix
+        inputs.sops-nix.nixosModules.sops
+        inputs.stylix.nixosModules.stylix
       ];
 
       homeCommonModules = [
@@ -80,148 +73,119 @@
               useUserPackages = true;
 
               extraSpecialArgs = {
-                inherit inputs;
+                inherit lib inputs;
               };
 
               sharedModules = [
-                sops-nix.homeManagerModules.sops
-                nixvim.homeManagerModules.nixvim
+                inputs.sops-nix.homeManagerModules.sops
+                inputs.nixvim.homeManagerModules.nixvim
               ];
             };
           };
         }
       ];
+
+      mkSystem =
+        { modules, ... }:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit lib;
+          };
+
+          modules = modules ++ hostCommonModules ++ homeCommonModules;
+        };
+
     in
     {
       nixosConfigurations = {
         # Security
-        pinky = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit lib;
-          };
+        pinky = mkSystem {
+          modules = [
+            ./configuration/host/pinky
+            ./configuration/user/sysadmin/host
 
-          modules =
-            [
-              ./configuration/host/pinky
-              ./configuration/user/sysadmin/host
-
-              {
-                config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
-              }
-            ]
-            ++ hostCommonModules
-            ++ homeCommonModules;
+            {
+              config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
+            }
+          ];
         };
 
         # Services
-        thebrain = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit lib;
-          };
+        thebrain = mkSystem {
+          modules = [
+            ./configuration/host/thebrain
+            ./configuration/user/sysadmin/host
 
-          modules =
-            [
-              ./configuration/host/thebrain
-              ./configuration/user/sysadmin/host
-
-              {
-                config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
-              }
-            ]
-            ++ hostCommonModules
-            ++ homeCommonModules;
+            {
+              config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
+            }
+          ];
         };
 
         # Workstation
-        furrball = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit lib inputs;
-          };
+        furrball = mkSystem {
+          modules = [
+            ./configuration/host/furrball
+            ./configuration/user/sdk/host
+            ./configuration/user/sysadmin/host
 
-          modules =
-            [
-              ./configuration/host/furrball
-              ./configuration/user/sdk/host
-              ./configuration/user/sysadmin/host
+            {
+              config.home-manager.users.sdk = import ./configuration/user/sdk/home;
+              config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
+            }
 
-              {
-                config.home-manager.users.sdk = import ./configuration/user/sdk/home;
-                config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
-              }
+            inputs.nixos-hardware.nixosModules.common-pc
+            inputs.nixos-hardware.nixosModules.common-pc-ssd
+            inputs.nixos-hardware.nixosModules.common-gpu-amd
 
-              nixos-hardware.nixosModules.common-pc
-              nixos-hardware.nixosModules.common-pc-ssd
+            inputs.nix-index-database.nixosModules.nix-index
 
-              nix-index-database.nixosModules.nix-index
-
-              qde.nixosModules.default
-            ]
-            ++ hostCommonModules
-            ++ homeCommonModules;
+            inputs.qde.nixosModules.default
+          ];
         };
 
         # Storage
-        babs = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit lib;
-          };
+        babs = mkSystem {
+          modules = [
+            ./configuration/host/babs
+            ./configuration/user/sysadmin/host
 
-          modules =
-            [
-              ./configuration/host/babs
-              ./configuration/user/sysadmin/host
+            {
+              config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
+            }
 
-              {
-                config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
-              }
-
-              nixos-hardware.nixosModules.common-pc
-              nixos-hardware.nixosModules.common-pc-ssd
-            ]
-            ++ hostCommonModules
-            ++ homeCommonModules;
+            inputs.nixos-hardware.nixosModules.common-pc
+            inputs.nixos-hardware.nixosModules.common-pc-ssd
+          ];
         };
 
         # Laptop
-        buster = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit lib;
-          };
+        buster = mkSystem {
+          modules = [
+            ./configuration/host/buster
+            ./configuration/user/sdk/host
+            ./configuration/user/sysadmin/host
 
-          modules =
-            [
-              ./configuration/host/buster
-              ./configuration/user/sdk/host
-              ./configuration/user/sysadmin/host
+            {
+              config.home-manager.users.sdk = import ./configuration/user/sdk/home;
+              # TODO: Fix sdk_buster
+              # // (import ./configuration/user/sdk_buster/home);
+              config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
+            }
 
-              {
-                config.home-manager.users.sdk = import ./configuration/user/sdk/home;
-                # TODO: Fix sdk_buster
-                # // (import ./configuration/user/sdk_buster/home);
-                config.home-manager.users.sysadmin = import ./configuration/user/sysadmin/home;
-              }
-
-              nixos-hardware.nixosModules.microsoft-surface-pro-intel
-            ]
-            ++ hostCommonModules
-            ++ homeCommonModules;
+            inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
+          ];
         };
 
         # Installer ISO
-        installer = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit lib;
-          };
+        installer = mkSystem {
           modules = [
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
             ./installer/looniversity-minimal.nix
             {
               config.home-manager.users.nixos = import ./configuration/user/nixos/home;
             }
-            sops-nix.nixosModules.sops
-          ] ++ homeCommonModules;
+          ];
         };
       };
 
