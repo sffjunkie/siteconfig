@@ -39,7 +39,7 @@
 
       cdl() { cd $1; ls -l; }
 
-      nixpkgs-repl() {
+      npr() {
         if [ -z "$1" ]; then
           nixpkgs="<nixpkgs>"
         else
