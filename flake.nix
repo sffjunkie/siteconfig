@@ -86,13 +86,13 @@
       ];
 
       mkSystem =
-        { modules, ... }:
+        { baseModules, ... }:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit lib;
           };
 
-          modules = modules ++ hostCommonModules ++ homeCommonModules;
+          modules = baseModules ++ hostCommonModules ++ homeCommonModules;
         };
 
     in
@@ -100,7 +100,7 @@
       nixosConfigurations = {
         # Security
         pinky = mkSystem {
-          modules = [
+          baseModules = [
             ./configuration/host/pinky
             ./configuration/user/sysadmin/host
 
@@ -112,7 +112,7 @@
 
         # Services
         thebrain = mkSystem {
-          modules = [
+          baseModules = [
             ./configuration/host/thebrain
             ./configuration/user/sysadmin/host
 
@@ -124,7 +124,7 @@
 
         # Workstation
         furrball = mkSystem {
-          modules = [
+          baseModules = [
             ./configuration/host/furrball
             ./configuration/user/sdk/host
             ./configuration/user/sysadmin/host
@@ -146,7 +146,7 @@
 
         # Storage
         babs = mkSystem {
-          modules = [
+          baseModules = [
             ./configuration/host/babs
             ./configuration/user/sysadmin/host
 
@@ -161,7 +161,7 @@
 
         # Laptop
         buster = mkSystem {
-          modules = [
+          baseModules = [
             ./configuration/host/buster
             ./configuration/user/sdk/host
             ./configuration/user/sysadmin/host
@@ -179,7 +179,7 @@
 
         # Installer ISO
         installer = mkSystem {
-          modules = [
+          baseModules = [
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
             ./installer/looniversity-minimal.nix
             {
