@@ -68,6 +68,18 @@ let
           ${pkgs.nix-output-monitor}/bin/nom --json
         ;;
 
+      boot)
+        sudo ${pkgs.figlet}/bin/figlet \
+          -d "${pkgs.figlet}/share/figlet" \
+          -f doom \
+          -w "''${COLUMNS}" \
+          "$target  :  boot''${extra_info}"
+
+        sudo nixos-rebuild boot --flake ".#''${target}" \
+          --impure --log-format internal-json "''${extra_args[@]}" |& \
+          ${pkgs.nix-output-monitor}/bin/nom --json
+        ;;
+
       switch)
         sudo ${pkgs.figlet}/bin/figlet \
           -d "${pkgs.figlet}/share/figlet" \
