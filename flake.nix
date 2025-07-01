@@ -208,7 +208,7 @@
 
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
 
-      # The nix devShell above adds a nix-test function which runs the tests
+      # The nix devShell above adds a `nut` function which runs the tests
       # under the `unitTests` attribute
       unitTests = forAllSystems (
         system:
