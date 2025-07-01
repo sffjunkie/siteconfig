@@ -73,7 +73,7 @@
               useUserPackages = true;
 
               extraSpecialArgs = {
-                inherit lib inputs;
+                inherit inputs;
               };
 
               sharedModules = [
