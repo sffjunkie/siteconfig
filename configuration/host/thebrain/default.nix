@@ -34,6 +34,8 @@
       theme = {
         stylix.enable = true;
       };
+
+      shell.zsh.enable = true;
     };
 
     system.stateVersion = "23.05"; # Did you read the comment?
