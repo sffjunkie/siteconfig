@@ -51,17 +51,8 @@ in
       description = lib.mdDoc "User account under which graylog runs";
     };
 
-    package = mkOption {
-      type = types.package;
-      default =
-        if lib.versionOlder config.system.stateVersion "23.05" then pkgs.graylog-3_3 else pkgs.graylog-5_1;
-      defaultText = lib.literalExpression (
-        if lib.versionOlder config.system.stateVersion "23.05" then
-          "pkgs.graylog-3_3"
-        else
-          "pkgs.graylog-5_1"
-      );
-      description = lib.mdDoc "Graylog package to use.";
+    package = lib.mkPackageOption pkgs "graylog" {
+      example = "graylog-6_0";
     };
 
     isMaster = mkOption {
