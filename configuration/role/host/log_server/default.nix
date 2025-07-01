@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -19,6 +20,8 @@ in
       service.mongodb.enable = true;
       service.graylog = {
         enable = true;
+        package = pkgs.graylog-6_1;
+
         extraConfig = "http_bind_address = 0.0.0.0:9011";
         elasticsearchHosts = [ "http://localhost:9200" ];
       };
