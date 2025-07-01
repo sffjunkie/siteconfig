@@ -25,14 +25,8 @@
       theme = {
         stylix.enable = true;
       };
-    };
 
-    programs.zsh = {
-      enable = true;
-      loginShellInit = ''
-        # do not glob # as it conflicts with nix flakes
-        disable -p '#'
-      '';
+      shell.zsh.enable = true;
     };
 
     environment.localBinInPath = true;
