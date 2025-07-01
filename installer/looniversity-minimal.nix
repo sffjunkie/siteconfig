@@ -38,7 +38,7 @@ with lib;
 
     environment.etc = {
       nixos.source = ../configuration;
-      disko.source = ../disko;
+      disko.source = ../template/disko;
 
       "wpa_supplicant.conf".source = config.sops.templates."wpa_supplicant".path;
     };
