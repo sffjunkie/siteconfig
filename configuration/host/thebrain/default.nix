@@ -20,17 +20,13 @@
 
     looniversity = {
       service = {
-        graylog = {
-          enable = true;
-          extraConfig = "http_bind_address = 127.0.0.1:9011";
-          elasticsearchHosts = [ "http://localhost:9200" ];
-        };
         mongodb.enable = true;
         nextcloud.enable = true;
         postgresql.enable = true;
       };
 
       role = {
+        log_server.enable = true;
         server.enable = true;
         vm_host.enable = true;
       };
