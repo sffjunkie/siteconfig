@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.network.link.bluetooth;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.network.link.bluetooth = {
@@ -18,6 +18,6 @@ in
       enable = true;
       powerOnBoot = true;
     };
-    services.blueman.enable = true;
+    services.blueman = enabled;
   };
 }

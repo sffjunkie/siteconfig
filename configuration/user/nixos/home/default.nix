@@ -1,6 +1,9 @@
+let
+  inherit (lib) enabled;
+in
 {
   config = {
-    programs.home-manager.enable = true;
+    programs.home-manager = enabled;
 
     home = {
       username = "nixos";

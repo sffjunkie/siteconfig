@@ -7,6 +7,7 @@
 let
   cfg = config.looniversity.shell.zsh;
   inherit (lib)
+    enabled
     mkDefault
     mkEnableOption
     mkIf
@@ -30,8 +31,8 @@ in
       enable = true;
       dotDir = ".config/zsh";
       enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
+      autosuggestion = enabled;
+      syntaxHighlighting = enabled;
       initContent = config.looniversity.shell.zsh.initContent;
     };
 

@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.storage.zfs.autoscrub;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.storage.zfs.autoscrub = {
@@ -14,6 +14,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.zfs.autoScrub.enable = true;
+    services.zfs.autoScrub = enabled;
   };
 }

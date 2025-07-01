@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.looniversity.role.games_machine;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.games_machine = {
@@ -14,15 +14,15 @@ in
 
   config = mkIf cfg.enable {
     looniversity = {
-      role.gui.enable = true;
+      role.gui = enabled;
       game = {
-        steam.enable = true;
-        lutris.enable = true;
+        steam = enabled;
+        lutris = enabled;
 
-        retroarch.enable = true;
+        retroarch = enabled;
       };
       media = {
-        pipewire.enable = true;
+        pipewire = enabled;
       };
 
       mount = {

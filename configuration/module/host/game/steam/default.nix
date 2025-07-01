@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.game.steam;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.game.steam = {
@@ -16,12 +16,12 @@ in
   config = mkIf cfg.enable {
     hardware.graphics.enable32Bit = true;
 
-    programs.gamemode.enable = true;
+    programs.gamemode = enabled;
     programs.steam = {
       enable = true;
 
-      extest.enable = true;
-      gamescopeSession.enable = true;
+      extest = enabled;
+      gamescopeSession = enabled;
 
       extraCompatPackages = [
         pkgs.proton-ge-bin

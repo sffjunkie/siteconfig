@@ -6,6 +6,7 @@
 let
   cfg = config.looniversity.storage.udisks2;
   inherit (lib)
+    enabled
     mkEnableOption
     mkIf
     mkOption
@@ -20,6 +21,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.udisks2.enable = true;
+    services.udisks2 = enabled;
   };
 }

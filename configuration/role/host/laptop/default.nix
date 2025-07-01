@@ -6,9 +6,9 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
-
   cfg = config.looniversity.role.laptop;
+
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.laptop = {
@@ -18,34 +18,34 @@ in
   config = mkIf cfg.enable {
     looniversity = {
       role = {
-        gui.enable = true;
+        gui = enabled;
       };
 
       desktop = {
-        notification.libnotify.enable = true;
+        notification.libnotify = enabled;
       };
 
       device = {
-        yubikey.enable = true;
+        yubikey = enabled;
       };
 
       media = {
-        pipewire.enable = true;
+        pipewire = enabled;
       };
 
       network = {
         link = {
-          bluetooth.enable = true;
+          bluetooth = enabled;
         };
       };
 
       service = {
-        homepage-dashboard.enable = true;
+        homepage-dashboard = enabled;
       };
 
       system = {
-        keyring.enable = true;
-        font.enable = true;
+        keyring = enabled;
+        font = enabled;
       };
     };
 
@@ -64,13 +64,13 @@ in
       "surface_hid_core"
       "surface_hid"
     ];
-    # nixos-hardware.microsoft-surface.ipts.enable = true;
+    # nixos-hardware.microsoft-surface.ipts= enabled;
 
-    networking.networkmanager.enable = true;
+    networking.networkmanager = enabled;
     networking.firewall.enable = false;
 
-    services.libinput.enable = true;
-    services.pcscd.enable = true;
-    services.upower.enable = true;
+    services.libinput = enabled;
+    services.pcscd = enabled;
+    services.upower = enabled;
   };
 }

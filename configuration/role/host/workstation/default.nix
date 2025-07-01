@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.role.workstation;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.workstation = {
@@ -16,50 +16,50 @@ in
   config = mkIf cfg.enable {
     looniversity = {
       admin = {
-        mqtt.enable = true;
-        mqttx.enable = true;
-        mongodb.enable = true;
+        mqtt = enabled;
+        mqttx = enabled;
+        mongodb = enabled;
       };
 
       device = {
-        stadia.enable = true;
+        stadia = enabled;
         wacom.enable = false;
-        yubikey.enable = true;
+        yubikey = enabled;
       };
 
       role = {
-        gui.enable = true;
+        gui = enabled;
       };
 
       desktop = {
-        notification.libnotify.enable = true;
+        notification.libnotify = enabled;
       };
 
       storage = {
-        minio-client.enable = true;
+        minio-client = enabled;
       };
 
       media = {
-        pipewire.enable = true;
+        pipewire = enabled;
       };
 
       network = {
         service = {
-          sshd.enable = true;
+          sshd = enabled;
         };
         link = {
-          bluetooth.enable = true;
+          bluetooth = enabled;
         };
       };
 
       service = {
-        homepage-dashboard.enable = true;
+        homepage-dashboard = enabled;
       };
 
       system = {
-        font.enable = true;
-        keyring.enable = true;
-        nix-index.enable = true;
+        font = enabled;
+        keyring = enabled;
+        nix-index = enabled;
       };
     };
 
@@ -69,10 +69,10 @@ in
       pkgs.d-spy
     ];
 
-    networking.networkmanager.enable = true;
+    networking.networkmanager = enabled;
     networking.firewall.enable = false;
 
-    services.libinput.enable = true;
-    services.pcscd.enable = true;
+    services.libinput = enabled;
+    services.pcscd = enabled;
   };
 }

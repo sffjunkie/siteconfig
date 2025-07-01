@@ -6,7 +6,12 @@
 }:
 let
   cfg = config.looniversity.gui.zathura;
-  inherit (lib) mkDefault mkEnableOption mkIf;
+  inherit (lib)
+    enabled
+    mkDefault
+    mkEnableOption
+    mkIf
+    ;
 in
 {
   options.looniversity.gui.zathura = {
@@ -14,6 +19,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.zathura.enable = true;
+    programs.zathura = enabled;
   };
 }

@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.virtualisation.system;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.virtualisation.system = {
@@ -18,16 +18,16 @@ in
       libvirtd = {
         enable = true;
         qemu = {
-          swtpm.enable = true;
+          swtpm = enabled;
           ovmf = {
             enable = true;
             packages = [ pkgs.OVMFFull.fd ];
           };
         };
       };
-      spiceUSBRedirection.enable = true;
+      spiceUSBRedirection = enabled;
     };
-    services.spice-vdagentd.enable = true;
+    services.spice-vdagentd = enabled;
 
     environment.variables = {
       LIBVIRT_DEFAULT_URI = "qemu:///system";

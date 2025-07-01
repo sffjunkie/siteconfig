@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.role.gui;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.gui = {
@@ -22,7 +22,7 @@ in
       desktop = {
         environment = {
           gnome.enable = false;
-          qtile.enable = true;
+          qtile = enabled;
         };
       };
     };

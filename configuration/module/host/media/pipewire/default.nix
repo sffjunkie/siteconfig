@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.media.pipewire;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.media.pipewire = {
@@ -15,13 +15,14 @@ in
 
   config = mkIf cfg.enable {
     services.pulseaudio.enable = false;
-    security.rtkit.enable = true;
+    security.rtkit = enabled;
     services.pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      jack.enable = true;
-      pulse.enable = true;
+      alsa = enabled // {
+        support32Bit = true;
+      };
+      jack = enabled;
+      pulse = enabled;
     };
   };
 }

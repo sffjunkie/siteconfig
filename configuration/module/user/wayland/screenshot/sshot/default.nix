@@ -83,6 +83,7 @@ let
   '';
 
   inherit (lib)
+    enabled
     mkDefault
     mkEnableOption
     mkIf
@@ -93,7 +94,7 @@ in
   options.looniversity.wayland.screenshot.sshot.enable = mkEnableOption "screenshot script";
 
   config = mkIf cfg.enable {
-    looniversity.wayland.screenshot.swappy.enable = true;
+    looniversity.wayland.screenshot.swappy = enabled;
 
     home.packages = [
       sshot

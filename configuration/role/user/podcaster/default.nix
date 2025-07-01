@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.role.podcaster;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.podcaster = {
@@ -16,7 +16,7 @@ in
   config = mkIf cfg.enable {
     looniversity = {
       media = {
-        obs-studio.enable = true;
+        obs-studio = enabled;
       };
     };
   };

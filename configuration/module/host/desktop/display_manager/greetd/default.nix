@@ -8,6 +8,7 @@ let
   cfg = config.looniversity.desktop.display_manager.greetd;
 
   inherit (lib)
+    enabled
     mkEnableOption
     mkIf
     mkMerge
@@ -21,7 +22,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.greetd.enable = true;
+    services.greetd = enabled;
 
     systemd.services.greetd.serviceConfig = {
       StandardInput = "tty";

@@ -6,7 +6,12 @@
 }:
 let
   cfg = config.looniversity.gui.qutebrowser;
-  inherit (lib) mkDefault mkEnableOption mkIf;
+  inherit (lib)
+    enabled
+    mkDefault
+    mkEnableOption
+    mkIf
+    ;
 in
 {
   options.looniversity.gui.qutebrowser = {
@@ -14,7 +19,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    stylix.targets.qutebrowser.enable = true;
+    stylix.targets.qutebrowser = enabled;
 
     programs.qutebrowser = {
       enable = true;

@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) enabled;
+in
 {
   imports = [
     ./backup.nix
@@ -22,7 +25,7 @@
 
     looniversity = {
       network = {
-        tool.cli.enable = true;
+        tool.cli = enabled;
       };
 
       fs = {
@@ -86,15 +89,15 @@
       };
 
       theme = {
-        stylix.enable = true;
+        stylix = enabled;
       };
 
       role = {
-        server.enable = true;
+        server = enabled;
       };
     };
 
-    programs.zsh.enable = true;
+    programs.zsh = enabled;
 
     system.stateVersion = "23.05"; # Did you read the comment?
   };

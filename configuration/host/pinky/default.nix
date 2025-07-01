@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) enabled;
+in
 {
   imports = [
     ./boot.nix
@@ -20,13 +23,13 @@
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     looniversity = {
-      service.lldap.enable = true;
+      service.lldap = enabled;
 
       theme = {
-        stylix.enable = true;
+        stylix = enabled;
       };
 
-      shell.zsh.enable = true;
+      shell.zsh = enabled;
     };
 
     environment.localBinInPath = true;

@@ -7,6 +7,7 @@
 let
   cfg = config.looniversity.wayland.clipboard.cliphist;
   inherit (lib)
+    enabled
     mkDefault
     mkEnableOption
     mkIf
@@ -19,7 +20,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.cliphist.enable = true;
-    looniversity.wayland.clipboard.wl-clipboard.enable = true;
+    services.cliphist = enabled;
+    looniversity.wayland.clipboard.wl-clipboard = enabled;
   };
 }

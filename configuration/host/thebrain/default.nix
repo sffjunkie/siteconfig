@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) enabled;
+in
 {
   imports = [
     ./boot.nix
@@ -20,22 +23,22 @@
 
     looniversity = {
       service = {
-        mongodb.enable = true;
-        nextcloud.enable = true;
-        postgresql.enable = true;
+        mongodb = enabled;
+        nextcloud = enabled;
+        postgresql = enabled;
       };
 
       role = {
-        log_server.enable = true;
-        server.enable = true;
-        vm_host.enable = true;
+        log_server = enabled;
+        server = enabled;
+        vm_host = enabled;
       };
 
       theme = {
-        stylix.enable = true;
+        stylix = enabled;
       };
 
-      shell.zsh.enable = true;
+      shell.zsh = enabled;
     };
 
     system.stateVersion = "23.05"; # Did you read the comment?

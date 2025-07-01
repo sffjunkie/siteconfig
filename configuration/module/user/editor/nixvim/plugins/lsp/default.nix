@@ -1,3 +1,7 @@
+{ lib, ... }:
+let
+  inherit (lib) enabled;
+in
 {
   imports = [
     ./python.nix
@@ -16,11 +20,11 @@
           };
 
           servers = {
-            bashls.enable = true;
-            jsonls.enable = true;
-            lua_ls.enable = true;
-            nil_ls.enable = true;
-            yamlls.enable = true;
+            bashls = enabled;
+            jsonls = enabled;
+            lua_ls = enabled;
+            nil_ls = enabled;
+            yamlls = enabled;
           };
         };
       };

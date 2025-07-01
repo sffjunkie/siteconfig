@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.gui.streamdeck;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.gui.streamdeck = {
@@ -18,7 +18,7 @@ in
       pkgs.streamdeck-ui
     ];
 
-    services.status-notifier-watcher.enable = true;
+    services.status-notifier-watcher = enabled;
 
     systemd.user.services.streamdeck = {
       Install.WantedBy = [ "default.target" ];

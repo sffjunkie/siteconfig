@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.desktop.environment.gnome;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.desktop.environment.gnome = {
@@ -16,8 +16,8 @@ in
   config = mkIf cfg.enable {
     services = {
       displayManager.defaultSession = "gnome";
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+      displayManager.gdm = enabled;
+      desktopManager.gnome = enabled;
     };
   };
 }

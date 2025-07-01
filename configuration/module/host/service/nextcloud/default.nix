@@ -9,6 +9,7 @@ let
   cfg = config.looniversity.service.nextcloud;
 
   inherit (lib)
+    enabled
     mkEnableOption
     mkIf
     mkOption
@@ -35,8 +36,9 @@ in
       package = pkgs.nextcloud31;
       hostName = "cloud.looniversity.net";
 
-      autoUpdateApps.enable = true;
-      autoUpdateApps.startAt = "05:00:00";
+      autoUpdateApps = enabled // {
+        startAt = "05:00:00";
+      };
 
       settings = {
         overwriteprotocol = "https";

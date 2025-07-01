@@ -15,7 +15,7 @@ let
     destination = "/lib/udev/rules.d/71-wacom.rules";
   };
 
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.device.wacom = {
@@ -24,7 +24,7 @@ in
 
   config = mkIf cfg.enable {
     services.xserver = {
-      wacom.enable = true;
+      wacom = enabled;
     };
 
     services.udev.packages = [

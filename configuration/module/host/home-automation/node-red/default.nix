@@ -7,6 +7,7 @@ let
   cfg = config.looniversity.home-automation.node-red;
 
   inherit (lib)
+    enabled
     mkEnableOption
     mkIf
     mkOption
@@ -21,16 +22,11 @@ in
       type = types.attrsOf types.str;
       default = { };
     };
-
-    nodes = mkOption {
-      type = types.attrsOf types.str;
-      default = { };
-    };
   };
 
   config = mkIf cfg.enable {
     looniversity = {
-      development.nodejs.enable = true;
+      development.nodejs = enabled;
     };
 
     environment.shellAliases = {

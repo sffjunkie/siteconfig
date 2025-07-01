@@ -1,13 +1,15 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
-# let
-#   p = config.age.secrets.secret-mail-looniversity.path;
-# in
+let
+  inherit (lib) enabled;
+  # p = config.age.secrets.secret-mail-looniversity.path;
+in
 {
-  config.programs.mbsync.enable = true;
+  config.programs.mbsync = enabled;
 
   config.accounts.email = {
     maildirBasePath = ".local/share/email";

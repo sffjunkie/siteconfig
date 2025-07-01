@@ -6,7 +6,12 @@
 }:
 let
   cfg = config.looniversity.role.server;
-  inherit (lib) mkEnableOption mkIf optionals;
+  inherit (lib)
+    enabled
+    mkEnableOption
+    mkIf
+    optionals
+    ;
 in
 {
   options.looniversity.role.server = {
@@ -15,11 +20,11 @@ in
 
   config = mkIf cfg.enable {
     looniversity = {
-      # profile.hardened.enable = true;
+      # profile.hardened= enabled;
 
-      service.autoUpgrade.enable = true;
-      service.fail2ban.enable = true;
-      network.service.sshd.enable = true;
+      service.autoUpgrade = enabled;
+      service.fail2ban = enabled;
+      network.service.sshd = enabled;
     };
 
     networking.firewall = {

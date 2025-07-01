@@ -6,7 +6,12 @@
 }:
 let
   cfg = config.looniversity.service.syncthing;
-  inherit (lib) mkDefault mkEnableOption mkIf;
+  inherit (lib)
+    enabled
+    mkDefault
+    mkEnableOption
+    mkIf
+    ;
 in
 {
   options.looniversity.service.syncthing = {
@@ -14,6 +19,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.syncthing.enable = true;
+    services.syncthing = enabled;
   };
 }

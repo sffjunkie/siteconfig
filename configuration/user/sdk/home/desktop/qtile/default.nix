@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) enabled;
+in
 {
   config = lib.mkIf osConfig.looniversity.desktop.environment.qtile.enable {
     xdg.configFile = {
@@ -16,13 +19,13 @@
 
     looniversity = {
       gui = {
-        fuzzel.enable = true;
+        fuzzel = enabled;
       };
 
       script = {
-        system-menu.enable = true;
-        rofi-clip.enable = true;
-        rofi-launcher.enable = true;
+        system-menu = enabled;
+        rofi-clip = enabled;
+        rofi-launcher = enabled;
       };
     };
   };

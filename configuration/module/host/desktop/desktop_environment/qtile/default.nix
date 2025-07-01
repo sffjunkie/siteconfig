@@ -7,7 +7,7 @@
 let
   cfg = config.looniversity.desktop.environment.qtile;
 
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.desktop.environment.qtile = {
@@ -77,16 +77,16 @@ in
       };
 
       wayland = {
-        lockscreen.swaylock.enable = true;
+        lockscreen.swaylock = enabled;
       };
     };
 
     programs = {
-      dconf.enable = true;
-      xwayland.enable = true;
+      dconf = enabled;
+      xwayland = enabled;
     };
 
-    security.polkit.enable = true;
+    security.polkit = enabled;
 
     xdg.portal = {
       enable = true;
@@ -94,7 +94,7 @@ in
         pkgs.xdg-desktop-portal-wlr
         pkgs.xdg-desktop-portal-gtk
       ];
-      wlr.enable = true;
+      wlr = enabled;
     };
   };
 }

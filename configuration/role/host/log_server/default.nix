@@ -5,9 +5,9 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
-
   cfg = config.looniversity.role.log_server;
+
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.log_server = {
@@ -16,8 +16,8 @@ in
 
   config = mkIf cfg.enable {
     looniversity = {
-      service.elasticsearch.enable = true;
-      service.mongodb.enable = true;
+      service.elasticsearch = enabled;
+      service.mongodb = enabled;
       service.graylog = {
         enable = true;
         package = pkgs.graylog-6_1;

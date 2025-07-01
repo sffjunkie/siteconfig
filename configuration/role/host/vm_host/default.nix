@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.looniversity.role.vm_host;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.vm_host = {
@@ -15,9 +15,9 @@ in
   config = mkIf cfg.enable {
     looniversity = {
       virtualisation = {
-        quickemu.enable = true;
-        system.enable = true;
-        vagrant.enable = true;
+        quickemu = enabled;
+        system = enabled;
+        vagrant = enabled;
       };
 
       # TODO: Fix NAS

@@ -1,11 +1,15 @@
+{ lib, ... }:
+let
+  inherit (lib) enabled;
+in
 {
   config = {
     programs.nixvim = {
       plugins.telescope = {
         enable = true;
         extensions = {
-          file-browser.enable = true;
-          fzf-native.enable = true;
+          file-browser = enabled;
+          fzf-native = enabled;
         };
 
         keymaps = {

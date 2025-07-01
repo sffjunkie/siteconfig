@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.looniversity.role.container_host;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.role.container_host = {
@@ -14,7 +14,7 @@ in
 
   config = mkIf cfg.enable {
     looniversity = {
-      system.podman.enable = true;
+      system.podman = enabled;
     };
   };
 }

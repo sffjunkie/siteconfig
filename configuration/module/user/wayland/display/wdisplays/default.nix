@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.wayland.display.wdisplays;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.wayland.display.wdisplays = {
@@ -18,6 +18,6 @@ in
       pkgs.wdisplays
     ];
 
-    looniversity.wayland.display.wlr-randr.enable = true;
+    looniversity.wayland.display.wlr-randr = enabled;
   };
 }

@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.system.keyring;
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.system.keyring = {
@@ -14,6 +14,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.gnome.gnome-keyring.enable = true;
+    services.gnome.gnome-keyring = enabled;
   };
 }

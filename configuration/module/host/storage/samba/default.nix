@@ -3,6 +3,9 @@
   lib,
   ...
 }:
+let
+  inherit (lib) enabled;
+in
 {
   config = lib.mkIf (config.looniversity.fs.cifs.shares != [ ]) {
     services.samba = {
@@ -25,6 +28,6 @@
       };
     };
 
-    services.samba-wsdd.enable = true;
+    services.samba-wsdd = enabled;
   };
 }

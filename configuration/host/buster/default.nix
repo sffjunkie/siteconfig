@@ -5,6 +5,9 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib) enabled;
+in
 {
   imports = [
     ./boot.nix
@@ -23,8 +26,8 @@
 
     looniversity = {
       media = {
-        pavucontrol.enable = true;
-        spotify.enable = true;
+        pavucontrol = enabled;
+        spotify = enabled;
       };
 
       # TODO: Disable until secrets added to Sops
@@ -33,18 +36,18 @@
       };
 
       role = {
-        laptop.enable = true;
-        vm_host.enable = true;
+        laptop = enabled;
+        vm_host = enabled;
       };
 
-      shell.zsh.enable = true;
+      shell.zsh = enabled;
 
-      storage.udisks2.enable = true;
+      storage.udisks2 = enabled;
 
       theme = {
-        nord.enable = true;
-        papirus.enable = true;
-        stylix.enable = true;
+        nord = enabled;
+        papirus = enabled;
+        stylix = enabled;
       };
     };
 
