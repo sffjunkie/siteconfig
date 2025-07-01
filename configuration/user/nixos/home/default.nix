@@ -1,3 +1,4 @@
+{ lib, ... }:
 let
   inherit (lib) enabled;
 in
