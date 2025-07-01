@@ -9,6 +9,13 @@
 with lib;
 {
   config = {
+    nix.settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     sops = {
@@ -27,13 +34,6 @@ with lib;
             psk=${config.sops.placeholder."wifi/psk"}
         }
       '';
-    };
-
-    nix.settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
     };
 
     isoImage.isoName = lib.mkForce "looniversity-minimal-${pkgs.stdenv.hostPlatform.system}.iso";
