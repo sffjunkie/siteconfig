@@ -50,7 +50,7 @@
       nps() {
         args=( "$@" )
         IFS=","
-        echo "Starting a shell with packages $args[*]"
+        echo "Starting a shell with packages: $args[*]"
         [ "$#" -gt 1 ] && shellarg="nixpkgs#{$args[*]}" || shellarg="nixpkgs#$1"
         eval nix shell "$shellarg"
       }
