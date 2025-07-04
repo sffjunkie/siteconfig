@@ -300,13 +300,13 @@ def qtile(settings: Settings):
     return [
         Key(
             control,
-            "Home",
+            "Page_Up",
             lazy.reload_config(),
             desc="Reload QTile",
         ),
         Key(
             control,
-            "End",
+            "Page_Down",
             lazy.spawn('loginctl terminate-user ""'),
             desc="Quit QTile",
         ),
