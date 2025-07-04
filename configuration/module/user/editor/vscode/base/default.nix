@@ -69,6 +69,7 @@ in
 
             "diffEditor.ignoreTrimWhitespace" = false;
 
+            "editor.foldingHighlight" = false;
             "editor.formatOnSave" = true;
             "editor.lineNumbers" = "relative";
             "editor.parameterHints.enabled" = false;
