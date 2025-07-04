@@ -79,8 +79,8 @@ in
 
             "files.insertFinalNewline" = true;
             "files.exclude" = {
-              ".devenv" = true;
-              ".direnv" = true;
+              "**/.devenv" = true;
+              "**/.direnv" = true;
             };
 
             "terminal.integrated.scrollback" = 5000;
