@@ -97,6 +97,14 @@
 
     in
     {
+      meta = {
+        meta = {
+          description = "Looniversity NixOS Configurations";
+          homepage = "https://github.com/sffjunkie/nixos";
+          license = lib.licenses.asl20;
+        };
+      };
+
       nixosConfigurations = {
         # Security
         pinky = mkSystem {
