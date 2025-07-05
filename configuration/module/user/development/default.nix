@@ -8,5 +8,6 @@
     ./pre-commit
     ./shellcheck
     ./treefmt
+    ./zeal
   ];
 }
