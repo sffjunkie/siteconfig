@@ -189,7 +189,7 @@
         installer = mkSystem {
           baseModules = [
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            ./installer/looniversity-minimal.nix
+            ./configuration/installer/looniversity-minimal.nix
             {
               config.home-manager.users.nixos = import ./configuration/user/nixos/home;
             }
