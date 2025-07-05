@@ -7,6 +7,12 @@
 let
   cfg = config.looniversity.desktop.window_manager.qtile;
 
+  python = pkgs.python3;
+
+  reloadScript = pkgs.writeShellScriptBin "qtile_reload" ''
+    ${python.pkgs.qtile}/bin/qtile cmd-obj -o cmd -f reload_config
+  '';
+
   startScript = pkgs.writeScript "startqtile" ''
     #! ${pkgs.zsh}/bin/zsh
 
@@ -64,6 +70,10 @@ in
       _JAVA_AWT_WM_NONREPARENTING = "1";
     };
 
+    environment.systemPackages = [
+      reloadScript
+    ];
+
     looniversity.desktop.greeter.tuigreet.script = "${startScript}";
 
     systemd.user.targets.qtile-session = {
@@ -76,7 +86,7 @@ in
 
     systemd.user.services.qtile =
       let
-        pyEnv = pkgs.python3.withPackages (
+        pyEnv = python.withPackages (
           ps:
           [
             ps.qtile
