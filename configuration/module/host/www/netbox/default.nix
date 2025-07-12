@@ -1,12 +1,27 @@
-{ config, ... }:
 {
-  config = {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  cfg = config.looniversity.service.netbox;
+
+  inherit (lib) mkEnableOption mkIf;
+in
+{
+  options.looniversity.service.netbox = {
+    enable = mkEnableOption "netbox";
+  };
+
+  config = mkIf cfg.enable {
     sops.secrets."netbox/secret_key" = {
       sopsFile = config.sopsFiles.service;
     };
 
     services.netbox = {
       enable = true;
+      package = pkgs.netbox_4_3;
       secretKeyFile = config.sops.secrets."netbox/secret_key".path;
     };
 

@@ -9,7 +9,6 @@
     ./homepage-dashboard
     ./immich
     ./lldap
-    ./netbox
     ./nextcloud
     ./step-ca
   ];
