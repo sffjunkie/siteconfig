@@ -19,5 +19,6 @@
     ./theme
     ./virtualisation
     ./wayland
+    ./www
   ];
 }
