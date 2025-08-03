@@ -29,5 +29,9 @@ in
         roms.enable = false;
       };
     };
+
+    hardware = {
+      xone = enabled;
+    };
   };
 }
