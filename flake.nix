@@ -105,6 +105,8 @@
             inherit lib;
           };
 
+          modules = modules ++ hostCommonModules ++ homeCommonModules;
+        };
 
       mkNixosGenerator =
         {
