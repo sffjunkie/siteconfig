@@ -11,7 +11,6 @@ let
     mkIf
     mkOption
     types
-    traceVal
     ;
 in
 {
