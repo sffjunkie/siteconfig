@@ -29,6 +29,7 @@ in
       enable = true;
       port = 2283;
       secretsFile = config.sops.templates."immich_env_file".path;
+      user = "immich";
 
       database = {
         enable = true;
@@ -37,8 +38,5 @@ in
         user = "immich";
       };
     };
-    # home.packages = [
-    #   pkgs.immich-go
-    # ];
   };
 }
