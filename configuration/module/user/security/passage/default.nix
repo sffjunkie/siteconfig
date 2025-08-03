@@ -28,13 +28,13 @@ in
     ];
 
     home.shellAliases = {
-      PASSAGE_DIR = passageDir;
-      PASSAGE_EXTENSIONS_DIR = "${passageDir}/identities";
+      PASSAGE_DIR = "${passageDir}/store";
+      PASSAGE_IDENTITIES_FILE = "${passageDir}/identities";
     };
 
     home.activation = {
       passsageDir = ''
-        mkdir -p ${passageDir}
+        mkdir -p ${passageDir}/store
       '';
     };
   };
