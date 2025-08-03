@@ -11,6 +11,7 @@ in
 {
   imports = [
     ../secret
+    ./user/nixos/host
   ];
 
   config = {
@@ -23,7 +24,7 @@ in
       ];
     };
 
-    home-manager.users.nixos = import ./configuration/user/nixos/home;
+    home-manager.users.nixos = import ./user/nixos/home;
 
     # system.build.isoImage.isoName = lib.mkDefault "looniversity-minimal-${system}.iso";
 
@@ -32,12 +33,13 @@ in
     # };
 
     environment.systemPackages = [
-      pkgs.gitMinimal
       pkgs.age
+      pkgs.gitMinimal
       pkgs.gnumake
+      pkgs.jq
       pkgs.just
-      pkgs.ssh-to-age
       pkgs.sops
+      pkgs.ssh-to-age
       pkgs.yq
     ];
 
