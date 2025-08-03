@@ -1,14 +1,21 @@
 {
   config,
   lib,
-  options,
   pkgs,
-  isoTarget ? "/run/media/sdk/Ventoy/",
+  # isoTarget ? "/run/media/sdk/Ventoy/",
   ...
 }:
-with lib;
+let
+  system = "x86_64-linux";
+in
 {
+  imports = [
+    ../secret
+  ];
+
   config = {
+    nixpkgs.hostPlatform = lib.mkDefault system;
+
     nix.settings = {
       experimental-features = [
         "nix-command"
@@ -16,42 +23,50 @@ with lib;
       ];
     };
 
-    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+    home-manager.users.nixos = import ./configuration/user/nixos/home;
+
+    # system.build.isoImage.isoName = lib.mkDefault "looniversity-minimal-${system}.iso";
+
+    # environment.etc = {
+    #   "wpa_supplicant.conf".source = config.sops.templates."wpa_supplicant".path;
+    # };
+
+    environment.systemPackages = [
+      pkgs.gitMinimal
+      pkgs.age
+      pkgs.gnumake
+      pkgs.just
+      pkgs.ssh-to-age
+      pkgs.sops
+      pkgs.yq
+    ];
+
+    services.openssh.enable = true;
 
     sops = {
-      defaultSopsFile = ../configuration/secret/secrets.yaml;
       defaultSopsFormat = "yaml";
 
-      secrets."wifi/ssid" = { };
-      secrets."wifi/psk" = { };
+      secrets."looniversity/wifi/Acme" = {
+        sopsFile = config.sopsFiles.network;
+      };
 
-      templates."wpa_supplicant".content = ''
-        ctrl_interface=/run/wpa_supplicant
-        ctrl_interface_group=wheel
-        update_config=1
-        network = {
-            ssid=${config.sops.placeholder."wifi/ssid"}
-            psk=${config.sops.placeholder."wifi/psk"}
-        }
-      '';
+      templates."wpa_supplicant" = {
+        content = ''
+          ctrl_interface=/run/wpa_supplicant
+          ctrl_interface_group=wheel
+          update_config=1
+          network = {
+              ssid=Acme"
+              psk=${config.sops.placeholder."looniversity/wifi/Acme"}
+          }
+        '';
+      };
     };
 
-    isoImage.isoName = lib.mkForce "looniversity-minimal-${pkgs.stdenv.hostPlatform.system}.iso";
-
-    environment.etc = {
-      nixos.source = ../configuration;
-      disko.source = ../template/disko;
-
-      "wpa_supplicant.conf".source = config.sops.templates."wpa_supplicant".path;
-    };
-
-    environment.systemPackages = with pkgs; [
-      age
-      gnumake
-      just
-      ssh-to-age
-      sops
-      yq
+    users.users.root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFugnsOEmySWbh2hIrAjroWAO+PB4RznGnt+oDuERsU"
     ];
+
+    system.stateVersion = "23.05"; # Did you read the comment?
   };
 }

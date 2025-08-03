@@ -203,12 +203,6 @@
 
             modules = [
               ./configuration/installer/looniversity-minimal.nix
-              ./configuration/user/nixos/host
-              {
-                config = {
-                  home-manager.users.nixos = import ./configuration/user/nixos/home;
-                };
-              }
               inputs.sops-nix.nixosModules.sops
             ]
             ++ homeCommonModules;

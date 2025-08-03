@@ -8,10 +8,11 @@ in
 
     home = {
       username = "nixos";
-      homeDirectory = "/home/nixos";
+      # homeDirectory = lib.mkForce "/home/nixos";
       stateVersion = "23.05";
       file = {
         ".sops.yaml".source = ../../../../.sops.yaml;
+        "Justfile".source = ../../../installer/Justfile;
       };
     };
   };
