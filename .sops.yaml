@@ -1,16 +1,18 @@
 keys:
-  - &user_sdk age15hk7pe2gnh3h7cmnv4sf0gfp4p5gwul66nxtm4a22xhltam4du5s0zq8rw
-  - &user_sysadmin age1ezktueyxlkm6qg583jrjngecw662w4k480d5kj3cgh070uyz6f6qdwxx3a
-  - &machine_babs age1m3h9cfyuqdapfuw3dydx90qwcdpmtqts9yxp7gljd808595fzdxs0ea4t8
-  - &machine_furrball age1jyrcctsjpxqd732emuhuyrp2nn3f8ejzxmanyt9pgwyzs46kgaesd08muf
-  - &machine_thebrain age1kwrx24t8lagyk28lvv5tx9v0aun764f4pc72kcnyk2nw5rjjvghqhj8gqv
+- &user_nixos age1gk8pnzm29uas2wsw5v5fjmlxxn6txv6gg5ad8yy7tvatlhgfw9rqyjrg0g
+- &user_sdk age15hk7pe2gnh3h7cmnv4sf0gfp4p5gwul66nxtm4a22xhltam4du5s0zq8rw
+- &user_sysadmin age1ezktueyxlkm6qg583jrjngecw662w4k480d5kj3cgh070uyz6f6qdwxx3a
+- &machine_babs age1m3h9cfyuqdapfuw3dydx90qwcdpmtqts9yxp7gljd808595fzdxs0ea4t8
+- &machine_furrball age1jyrcctsjpxqd732emuhuyrp2nn3f8ejzxmanyt9pgwyzs46kgaesd08muf
+- &machine_thebrain age1kwrx24t8lagyk28lvv5tx9v0aun764f4pc72kcnyk2nw5rjjvghqhj8gqv
 
 creation_rules:
-  - path_regex: configuration/secret/[^/]+\.(yaml|json|env|ini)$
-    key_groups:
-      - age:
-          - *user_sdk
-          - *user_sysadmin
-          - *machine_babs
-          - *machine_furrball
-          - *machine_thebrain
+- path_regex: configuration/secret/[^/]+\.(yaml|json|env|ini)$
+  key_groups:
+  - age:
+    - *user_nixos
+    - *user_sdk
+    - *user_sysadmin
+    - *machine_babs
+    - *machine_furrball
+    - *machine_thebrain
