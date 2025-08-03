@@ -12,3 +12,4 @@ installer/vm
 .vscode
 .tox
 .decrypted~*
+*.tmp.yaml
