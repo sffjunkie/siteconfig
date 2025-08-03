@@ -1,8 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    sops-nix.url = "github:Mic92/sops-nix";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -48,6 +52,7 @@
     {
       self,
       nixpkgs,
+      nixos-generators,
       home-manager,
       ...
     }@inputs:
@@ -184,18 +189,31 @@
             inputs.nixos-hardware.nixosModules.microsoft-surface-pro-intel
           ];
         };
-
-        # Installer ISO
-        installer = mkSystem {
-          baseModules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            ./configuration/installer/looniversity-minimal.nix
-            {
-              config.home-manager.users.nixos = import ./configuration/user/nixos/home;
-            }
-          ];
-        };
       };
+
+      packages.x86_64-linux =
+        let
+          system = "x86_64-linux";
+        in
+        {
+          installer = nixos-generators.nixosGenerate {
+            inherit lib system;
+
+            format = "install-iso";
+
+            modules = [
+              ./configuration/installer/looniversity-minimal.nix
+              ./configuration/user/nixos/host
+              {
+                config = {
+                  home-manager.users.nixos = import ./configuration/user/nixos/home;
+                };
+              }
+              inputs.sops-nix.nixosModules.sops
+            ]
+            ++ homeCommonModules;
+          };
+        };
 
       # Generic development shells
       # The default 'nix' shell includes scripts to build nixos systems
