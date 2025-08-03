@@ -105,7 +105,21 @@
             inherit lib;
           };
 
-          modules = baseModules ++ hostCommonModules ++ homeCommonModules;
+
+      mkNixosGenerator =
+        {
+          system,
+          format,
+          modules,
+          ...
+        }:
+        nixos-generators.nixosGenerate {
+          inherit format system;
+          specialArgs = {
+            inherit lib;
+          };
+
+          modules = modules ++ hostCommonModules ++ homeCommonModules;
         };
 
     in
@@ -199,23 +213,15 @@
         };
       };
 
-      packages.x86_64-linux =
-        let
+      packages.x86_64-linux = {
+        installer = mkNixosGenerator {
           system = "x86_64-linux";
-        in
-        {
-          installer = nixos-generators.nixosGenerate {
-            inherit lib system;
-
-            format = "install-iso";
-
-            modules = [
-              ./configuration/installer/looniversity-minimal.nix
-              inputs.sops-nix.nixosModules.sops
-            ]
-            ++ homeCommonModules;
-          };
+          format = "install-iso";
+          modules = [
+            ./configuration/installer/looniversity-minimal.nix
+          ];
         };
+      };
 
       # Generic development shells
       # The default 'nix' shell includes scripts to build nixos systems
