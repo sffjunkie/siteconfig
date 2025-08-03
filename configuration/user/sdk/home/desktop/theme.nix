@@ -78,6 +78,7 @@ in
 
       layout = {
         margin = margin;
+        border_width = 4;
       };
 
       logo = ""; # Nixos logo
