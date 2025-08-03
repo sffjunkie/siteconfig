@@ -13,6 +13,7 @@
     ./media
     ./music
     ./script
+    ./security
     ./service
     ./shell
     ./storage
