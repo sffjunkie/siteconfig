@@ -41,5 +41,9 @@ in
       pkgs.virt-viewer
       pkgs.python3Packages.libvirt
     ];
+
+    system.userActivationScripts.virshNetAutostart = ''
+      virsh net-autostart default
+    '';
   };
 }

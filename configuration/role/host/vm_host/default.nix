@@ -23,9 +23,5 @@ in
       # TODO: Fix NAS
       mount.iso.enable = false;
     };
-
-    system.userActivationScripts.virshNetAutostart = ''
-      virsh net-autostart default
-    '';
   };
 }
