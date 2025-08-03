@@ -1,19 +1,24 @@
 { lib, ... }:
 let
+  ageKeyFile = "/home/sdk/.config/sops/age/keys.txt";
+
   inherit (lib) enabled;
 in
 {
   config = {
-    programs.home-manager = enabled;
-
     home = {
-      username = "nixos";
-      # homeDirectory = lib.mkForce "/home/nixos";
-      stateVersion = "23.05";
+      homeDirectory = lib.mkForce "/home/nixos";
+
       file = {
-        ".sops.yaml".source = ../../../../.sops.yaml;
-        "Justfile".source = ../../../installer/Justfile;
+        ".sops.yaml".source = ../../../../../.sops.yaml;
+        "Justfile".source = ../../../Justfile;
       };
+
+      stateVersion = "23.05";
+
+      username = "nixos";
     };
+
+    programs.home-manager = enabled;
   };
 }
