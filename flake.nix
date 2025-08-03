@@ -99,7 +99,7 @@
       ];
 
       mkNixosSystem =
-        { baseModules, ... }:
+        { modules, ... }:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit lib;
@@ -121,7 +121,7 @@
       nixosConfigurations = {
         # Security
         pinky = mkNixosSystem {
-          baseModules = [
+          modules = [
             ./configuration/host/pinky
             ./configuration/user/sysadmin/host
 
@@ -133,7 +133,7 @@
 
         # Services
         thebrain = mkNixosSystem {
-          baseModules = [
+          modules = [
             ./configuration/host/thebrain
             ./configuration/user/sysadmin/host
 
@@ -145,7 +145,7 @@
 
         # Workstation
         furrball = mkNixosSystem {
-          baseModules = [
+          modules = [
             ./configuration/host/furrball
             ./configuration/user/sdk/host
             ./configuration/user/sysadmin/host
@@ -167,7 +167,7 @@
 
         # Storage
         babs = mkNixosSystem {
-          baseModules = [
+          modules = [
             ./configuration/host/babs
             ./configuration/user/sysadmin/host
 
@@ -182,7 +182,7 @@
 
         # Laptop
         buster = mkNixosSystem {
-          baseModules = [
+          modules = [
             ./configuration/host/buster
             ./configuration/user/sdk/host
             ./configuration/user/sysadmin/host
