@@ -27,7 +27,7 @@ in
       pkgs.passage
     ];
 
-    home.shellAliases = {
+    home.sessionVariables = {
       PASSAGE_DIR = "${passageDir}/store";
       PASSAGE_IDENTITIES_FILE = "${passageDir}/identities";
     };
