@@ -17,5 +17,6 @@ pkgs.mkShell {
     pkgs.node2nix
     pkgs.nvd
     pkgs.treefmt
-  ] ++ nixosScripts;
+  ]
+  ++ nixosScripts;
 }
