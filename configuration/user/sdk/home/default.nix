@@ -181,6 +181,10 @@ in
         kitty = disabled;
       };
 
+      tui = {
+        bagels = enabled;
+      };
+
       media = {
         playerctl = enabled;
       };
