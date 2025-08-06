@@ -20,6 +20,7 @@
     ./system
     ./terminal
     ./theme
+    ./tui
     ./wayland
   ];
 }
