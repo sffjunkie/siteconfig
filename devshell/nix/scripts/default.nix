@@ -6,6 +6,7 @@
   ...
 }:
 let
+  nixosScriptFlakeUpdate = pkgs.callPackage ./nfu.nix { };
   nixosScriptGenerations = pkgs.callPackage ./generations.nix { };
   nixosScriptInstaller = pkgs.callPackage ./installer.nix { };
   nixosScriptSystem = pkgs.callPackage ./system.nix { inherit tmpDir; };
@@ -13,6 +14,7 @@ let
   nixosScriptVm = pkgs.callPackage ./vm.nix { };
 in
 [
+  nixosScriptFlakeUpdate
   nixosScriptGenerations
   nixosScriptInstaller
   nixosScriptSystem
