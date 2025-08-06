@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.looniversity.security.passage;
-  passageDir = "~/.local/state/passage";
+  passageDir = "${config.xdg.dataHome}/passage";
 
   inherit (lib)
     enabled
