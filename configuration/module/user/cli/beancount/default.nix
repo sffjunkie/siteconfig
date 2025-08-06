@@ -16,7 +16,9 @@ in
   config = mkIf cfg.enable {
     home.packages = [
       pkgs.beancount
+      pkgs.beangulp
       pkgs.beanquery
+      pkgs.fava
     ];
   };
 }
