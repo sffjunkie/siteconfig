@@ -16,6 +16,7 @@ in
   config = mkIf cfg.enable {
     programs.starship = {
       enable = true;
+      enableZshIntegration = true;
       settings = {
         format = "$username$hostname$directory$git_branch$git_commit$git_state$git_metrics$cmd_duration$fill$direnv$env_var$python$nodejs$line_break$character";
         username = {
