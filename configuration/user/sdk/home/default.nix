@@ -23,6 +23,10 @@ in
 
   # config = osConfig.home-manager.users.${user}.config
   config = {
+    nixpkgs.config.permittedInsecurePackages = [
+      "libsoup-2.74.3"
+    ];
+
     programs.home-manager = enabled;
     home = {
       username = "sdk";
@@ -57,7 +61,7 @@ in
 
     looniversity = {
       audio = {
-        easyeffects = enabled;
+        easyeffects = disabled;
         qpwgraph = enabled;
         volumectl = enabled;
       };
@@ -199,6 +203,10 @@ in
         linkhandler = enabled;
         paths = enabled;
         sysinfo = enabled;
+      };
+
+      security = {
+        passage = enabled;
       };
 
       service = {
