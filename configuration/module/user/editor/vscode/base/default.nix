@@ -36,6 +36,7 @@ let
   marketplaceExtensionsList =
     with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
       dlasagno.rasi
+      dongfg.vscode-beancount-formatter
       executablebookproject.myst-highlight
       github.remotehub
       kennylong.kubernetes-yaml-formatter
