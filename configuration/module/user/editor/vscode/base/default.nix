@@ -48,6 +48,7 @@ let
       techer.open-in-browser
       tomphilbin.gruvbox-themes
       runem.lit-plugin
+      elagil.pre-commit-helper
     ];
 in
 {
