@@ -7,6 +7,14 @@
 let
   script = pkgs.writeScriptBin "nod" ''
     #!${lib.getExe pkgs.bash}
+
+    usage() {
+      echo "$0 host ip"
+      exit 1
+    }
+
+    [[ -z "$1" ]] && usage
+
     host_name=$1
     host_ip="${"2:-$host_name"}"
 
