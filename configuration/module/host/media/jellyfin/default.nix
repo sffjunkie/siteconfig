@@ -7,7 +7,7 @@
 let
   cfg = config.looniversity.media.jellyfin;
 
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.media.jellyfin = {
