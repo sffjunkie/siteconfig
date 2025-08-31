@@ -37,10 +37,10 @@ in
     ];
 
     environment.systemPackages = [
-      pkgs.greetd.tuigreet
+      pkgs.tuigreet
     ];
 
     services.greetd.settings.default_session.command =
-      "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --cmd ${config.looniversity.desktop.greeter.tuigreet.script}";
+      "${pkgs.tuigreet}/bin/tuigreet --remember --cmd ${config.looniversity.desktop.greeter.tuigreet.script}";
   };
 }
