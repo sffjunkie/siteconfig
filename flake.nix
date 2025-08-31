@@ -130,7 +130,7 @@
     {
       meta = {
         meta = {
-          description = "Looniversity NixOS Configurations";
+          description = "Looniversity Site Configuration";
           homepage = "https://github.com/sffjunkie/nixos";
           license = lib.licenses.asl20;
         };
