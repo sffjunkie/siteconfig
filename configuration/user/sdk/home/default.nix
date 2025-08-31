@@ -241,7 +241,7 @@ in
       system = {
         gpg = enabled;
         imagemagick = enabled;
-        polkit-agent = enabled;
+        polkit-gnome = enabled;
         pywal = enabled;
         user-dirs = enabled;
       };

@@ -12,11 +12,11 @@ let
     types
     ;
 
-  cfg = config.looniversity.system.polkit-agent;
+  cfg = config.looniversity.system.polkit-gnome;
 in
 {
-  options.looniversity.system.polkit-agent = {
-    enable = mkEnableOption "polkit-agent";
+  options.looniversity.system.polkit-gnome = {
+    enable = mkEnableOption "polkit-gnome";
 
     systemdTarget = mkOption {
       type = types.str;
