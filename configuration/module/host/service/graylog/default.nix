@@ -17,7 +17,7 @@ let
     node_id_file = ${cfg.nodeIdFile}
     elasticsearch_hosts = ${lib.concatStringsSep "," cfg.elasticsearchHosts}
     message_journal_dir = ${cfg.messageJournalDir}
-    mongodb_uri = ${cfg.mongodbUri}
+    mongodb_uri = ${mongodb_uri}
     plugin_dir = /var/lib/graylog/plugins
     data_dir = ${cfg.dataDir}
 
