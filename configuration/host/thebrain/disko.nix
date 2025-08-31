@@ -1,13 +1,9 @@
 {
-  disk0 ? "/dev/sda",
-  ...
-}:
-{
   disko.devices = {
     disk = {
       disk1 = {
         type = "disk";
-        device = "${disk0}";
+        device = "/dev/sda";
         content = {
           type = "gpt";
           partitions = {
@@ -29,10 +25,10 @@
               };
             };
             primary = {
-              size = "100%FREE";
-              type = "filesystem";
+              size = "100%";
               content = {
-                type = "btrfs";
+                type = "filesystem";
+                format = "ext4";
                 mountpoint = "/";
               };
             };
