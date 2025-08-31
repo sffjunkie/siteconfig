@@ -2,6 +2,7 @@
   imports = [
     ./admin
     ./db
+    ./deploy
     ./desktop
     ./device
     ./doc
