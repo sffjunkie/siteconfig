@@ -11,7 +11,6 @@ in
 {
   imports = [
     ../secret
-    ./user/nixos/host
   ];
 
   config = {
@@ -24,13 +23,16 @@ in
       ];
     };
 
-    home-manager.users.nixos = import ./user/nixos/home;
+    boot.loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+    };
 
     # system.build.isoImage.isoName = lib.mkDefault "looniversity-minimal-${system}.iso";
 
-    # environment.etc = {
-    #   "wpa_supplicant.conf".source = config.sops.templates."wpa_supplicant".path;
-    # };
+    environment.etc = {
+      "wpa_supplicant.conf".source = config.sops.templates."wpa_supplicant".path;
+    };
 
     environment.systemPackages = [
       pkgs.age
@@ -65,9 +67,11 @@ in
       };
     };
 
-    users.users.root.openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFugnsOEmySWbh2hIrAjroWAO+PB4RznGnt+oDuERsU"
-    ];
+    users.users.root = {
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGFugnsOEmySWbh2hIrAjroWAO+PB4RznGnt+oDuERsU"
+      ];
+    };
 
     system.stateVersion = "23.05"; # Did you read the comment?
   };
