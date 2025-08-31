@@ -32,5 +32,6 @@
     ./yq
     ./yubikey-manager
     ./zellij
+    ./zoxide
   ];
 }
