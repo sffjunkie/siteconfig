@@ -7,6 +7,7 @@ in
     looniversity = {
       system.age = enabled;
       system.sops = enabled;
+      system.polkit = enabled;
     };
   };
 }
