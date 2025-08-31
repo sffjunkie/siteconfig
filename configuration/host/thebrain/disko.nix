@@ -32,7 +32,7 @@
               size = "100%FREE";
               type = "filesystem";
               content = {
-                type = "ext4";
+                type = "btrfs";
                 mountpoint = "/";
               };
             };

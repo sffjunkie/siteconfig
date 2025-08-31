@@ -11,7 +11,7 @@ in
 {
   imports = [
     ./boot.nix
-    ./fs.nix
+    ./disko.nix
     ./hardware.nix
     ./networking.nix
 
