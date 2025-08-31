@@ -22,22 +22,22 @@ in
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     looniversity = {
+      role = {
+        log_server = enabled;
+        server = enabled;
+      };
+
       service = {
         mongodb = enabled;
         nextcloud = enabled;
         postgresql = enabled;
       };
 
-      role = {
-        log_server = enabled;
-        server = enabled;
-      };
+      shell.zsh = enabled;
 
       theme = {
         stylix = enabled;
       };
-
-      shell.zsh = enabled;
     };
 
     system.stateVersion = "23.05"; # Did you read the comment?
