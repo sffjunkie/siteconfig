@@ -58,5 +58,13 @@ in
         };
       };
     };
+
+    looniversity = {
+      mount = {
+        movies = enabled;
+        music = enabled;
+        private = enabled;
+      };
+    };
   };
 }
