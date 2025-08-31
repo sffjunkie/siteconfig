@@ -21,6 +21,9 @@ in
     };
 
     looniversity = {
+      cli = {
+        zoxide = enabled;
+      };
       shell = {
         zsh = enabled;
       };
