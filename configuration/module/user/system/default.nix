@@ -2,7 +2,7 @@
   imports = [
     ./gpg
     ./imagemagick
-    ./polkit-agent
+    ./polkit-gnome
     ./pywal
     ./user-dirs
   ];
