@@ -22,6 +22,10 @@ in
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     looniversity = {
+      media = {
+        jellyfin = enabled;
+      };
+
       role = {
         log_server = enabled;
         server = enabled;
