@@ -15,10 +15,14 @@ let
   confFile = pkgs.writeText "graylog.conf" ''
     is_master = ${lib.boolToString cfg.isMaster}
     node_id_file = ${cfg.nodeIdFile}
+    password_secret = ${cfg.passwordSecret}
+    root_username = ${cfg.rootUsername}
+    root_password_sha2 = ${cfg.rootPasswordSha2}
     elasticsearch_hosts = ${lib.concatStringsSep "," cfg.elasticsearchHosts}
     message_journal_dir = ${cfg.messageJournalDir}
-    mongodb_uri = ${mongodb_uri}
+    mongodb_uri = ${cfg.mongodbUri}
     plugin_dir = /var/lib/graylog/plugins
+    data_dir = ${cfg.dataDir}
 
     ${cfg.extraConfig}
   '';
