@@ -8,7 +8,10 @@
         };
         efi.canTouchEfiVariables = true;
       };
-      supportedFilesystems = [ "zfs" ];
+      supportedFilesystems = [
+        "zfs"
+        "exfat"
+      ];
 
       initrd.availableKernelModules = [
         "xhci_pci"
