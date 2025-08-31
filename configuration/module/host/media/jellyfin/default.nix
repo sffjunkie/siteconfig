@@ -64,6 +64,7 @@ in
         movies = enabled;
         music = enabled;
         private = enabled;
+        tv_shows = enabled;
       };
     };
   };
