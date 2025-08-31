@@ -16,7 +16,8 @@ let
     [[ -z "$1" ]] && usage
 
     host_name=$1
-    host_ip="${"2:-$host_name"}"
+
+    [[ -z "$2" ]] && host_ip="$host_name" || host_ip="$2"
 
     # Create a temporary directory
     temp=$(mktemp -d)
