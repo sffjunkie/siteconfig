@@ -38,7 +38,7 @@ let
     chmod 600 "$temp/etc/ssh/ssh_host_ed25519_key"
 
     # Install NixOS to the host system with our secrets
-    echo "Deploying to ''${host_name}"
+    echo "Deploying to ''${host_name} (''${host_ip})"
     ${pkgs.nixos-anywhere}/bin/nixos-anywhere --extra-files "$temp" --flake '.#'"''${host_name}" --target-host "root@''${host_ip}"
   '';
 in
