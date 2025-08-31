@@ -217,15 +217,25 @@
         };
       };
 
-      packages.x86_64-linux = {
-        installer = mkNixosGenerator {
-          system = "x86_64-linux";
-          format = "install-iso";
-          modules = [
-            ./configuration/installer/looniversity-minimal.nix
-          ];
-        };
-      };
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          installer = mkNixosGenerator {
+            system = pkgs.system;
+            format = "install-iso";
+            modules = [
+              ./configuration/installer/looniversity-minimal.nix
+              # ./configuration/user/nixos/host
+              # {
+              #   config.home-manager.users.nixos = import ./configuration/user/nixos/home;
+              # }
+            ];
+          };
+        }
+      );
 
       # Generic development shells
       # The default 'nix' shell includes scripts to build nixos systems
