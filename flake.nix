@@ -2,6 +2,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -70,6 +75,7 @@
       ];
 
       hostCommonModules = [
+        inputs.disko.nixosModules.disko
         inputs.sops-nix.nixosModules.sops
         inputs.stylix.nixosModules.stylix
       ];
