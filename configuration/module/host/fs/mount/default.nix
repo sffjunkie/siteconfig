@@ -6,5 +6,6 @@
     ./music
     ./private
     ./roms
+    ./tv_shows
   ];
 }
