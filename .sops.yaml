@@ -4,7 +4,9 @@ keys:
 - &user_sysadmin age1ezktueyxlkm6qg583jrjngecw662w4k480d5kj3cgh070uyz6f6qdwxx3a
 - &machine_babs age1m3h9cfyuqdapfuw3dydx90qwcdpmtqts9yxp7gljd808595fzdxs0ea4t8
 - &machine_furrball age1jyrcctsjpxqd732emuhuyrp2nn3f8ejzxmanyt9pgwyzs46kgaesd08muf
-- &machine_thebrain age1kwrx24t8lagyk28lvv5tx9v0aun764f4pc72kcnyk2nw5rjjvghqhj8gqv
+- &machine_thebrain age1tssd45ekk8u3ppjsd56hype3hdz38fw3zpcr0tgf9gsxk3gfqcvqp8lv5q
+- &machine_buster age17xcewrwf70m4c85m5m2u9xkdt695gkznq3zwtg6z3pcsm9z9fqcq5lf7tr
+- &machine_pinky age1hwjjapf87d5m8e9seutcyk9fdx2m92wnjhhlzy8r3t4tqcvysppsvwk5we
 
 creation_rules:
 - path_regex: configuration/secret/[^/]+\.(yaml|json|env|ini)$
@@ -16,3 +18,5 @@ creation_rules:
     - *machine_babs
     - *machine_furrball
     - *machine_thebrain
+    - *machine_buster
+    - *machine_pinky
