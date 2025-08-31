@@ -6,6 +6,7 @@
   ...
 }:
 let
+  nixosScriptDeploy = pkgs.callPackage ./deploy.nix { };
   nixosScriptFlakeUpdate = pkgs.callPackage ./nfu.nix { };
   nixosScriptGenerations = pkgs.callPackage ./generations.nix { };
   nixosScriptInstaller = pkgs.callPackage ./installer.nix { };
@@ -14,6 +15,7 @@ let
   nixosScriptVm = pkgs.callPackage ./vm.nix { };
 in
 [
+  nixosScriptDeploy
   nixosScriptFlakeUpdate
   nixosScriptGenerations
   nixosScriptInstaller
