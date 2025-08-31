@@ -31,7 +31,6 @@ in
       role = {
         log_server = enabled;
         server = enabled;
-        vm_host = enabled;
       };
 
       theme = {
