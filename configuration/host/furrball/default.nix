@@ -30,6 +30,10 @@ in
         postgresql = enabled;
       };
 
+      deploy = {
+        nixos-anywhere = enabled;
+      };
+
       doc = {
         mystmd = enabled;
       };
