@@ -105,6 +105,7 @@ in
         yq = enabled;
         yubikeyManager = enabled;
         zellij = enabled;
+        zoxide = enabled;
       };
 
       desktop = {
@@ -138,7 +139,7 @@ in
         gimp = enabled;
         gittyup = enabled;
         gnomeApps = enabled;
-        gns3 = enabled;
+        gns3 = disabled;
         gramps = enabled;
         inkscape = enabled;
         keepassxc = enabled;
