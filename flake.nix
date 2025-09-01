@@ -153,6 +153,7 @@
         thebrain = mkNixosSystem {
           modules = [
             ./configuration/host/thebrain
+            ./configuration/user/dbadmin/host
             ./configuration/user/sysadmin/host
 
             {
