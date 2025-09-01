@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) enabled;
+  inherit (lib) disabled enabled;
 in
 {
   imports = [
@@ -33,8 +33,8 @@ in
 
       service = {
         mongodb = enabled;
-        nextcloud = enabled;
-        postgresql = enabled;
+        nextcloud = disabled;
+        postgresql = disabled;
       };
 
       shell.zsh = enabled;
