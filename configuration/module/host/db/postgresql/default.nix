@@ -55,7 +55,7 @@ in
           { name = "dbadmin"; }
         ];
 
-      authentication = mkOverride 10 ''
+      authentication = ''
         host all  all     0.0.0.0/21        scram-sha-256
       '';
 
