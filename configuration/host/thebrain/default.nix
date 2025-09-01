@@ -34,7 +34,7 @@ in
       service = {
         mongodb = enabled;
         nextcloud = disabled;
-        postgresql = disabled;
+        postgresql = enabled;
       };
 
       shell.zsh = enabled;
