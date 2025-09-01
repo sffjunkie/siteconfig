@@ -55,8 +55,8 @@ in
           { name = "dbadmin"; }
         ];
 
-      authentication = ''
-        host all  all     0.0.0.0/21        scram-sha-256
+      authentication = lib.mkForce ''
+        host all  all     0.0.0.0/0        scram-sha-256
       '';
 
       settings = {
