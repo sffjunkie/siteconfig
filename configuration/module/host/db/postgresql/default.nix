@@ -56,7 +56,11 @@ in
         ];
 
       authentication = lib.mkForce ''
-        host all  all     0.0.0.0/0        scram-sha-256
+        host  all  all       0.0.0.0/0      scram-sha-256
+        local all  postgres  peer           map=postgres
+        local all  all       peer
+        host  all  all       127.0.0.1/32   md5
+        host  all  all       ::1/128        md5
       '';
 
       settings = {
