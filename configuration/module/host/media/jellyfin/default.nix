@@ -18,6 +18,7 @@ in
     services = {
       jellyfin = {
         enable = true;
+        openFirewall = true;
       };
 
       traefik = mkIf config.looniversity.network.service.traefik.enable {
