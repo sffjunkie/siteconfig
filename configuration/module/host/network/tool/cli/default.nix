@@ -19,10 +19,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      bridge-utils
-      dig
-      nfs-utils
+    environment.systemPackages = [
+      pkgs.bridge-utils
+      pkgs.dig
+      pkgs.nfs-utils
     ];
 
     environment.shellAliases = {
