@@ -367,7 +367,7 @@ in
       };
 
       postgresql = {
-        package = pkgs.postgresql_15;
+        package = pkgs.postgresql_17;
         host = "thebrain";
         port = 5432;
       };
