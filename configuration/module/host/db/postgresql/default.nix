@@ -38,6 +38,8 @@ in
       enable = true;
       package = pgPackage;
 
+      enableTCPIP = true;
+
       ensureDatabases = cfg.databases;
       ensureUsers =
         (map (elem: {
