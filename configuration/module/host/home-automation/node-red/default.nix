@@ -25,10 +25,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    looniversity = {
-      development.nodejs = enabled;
-    };
-
     environment.shellAliases = {
       node-red-pm = "npm --prefix=${config.services.node-red.userDir} --save";
     };

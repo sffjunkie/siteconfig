@@ -24,7 +24,7 @@ in
     looniversity = {
       home-automation = {
         mosquitto = enabled;
-        zigbee2mqtt = enabled;
+        # zigbee2mqtt = enabled;
       };
 
       media = {

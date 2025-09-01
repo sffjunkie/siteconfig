@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   sops,
   ...
 }:
@@ -10,7 +11,7 @@ let
   format = pkgs.formats.yaml { };
   configFile = format.generate "zigbee2mqtt.yaml" cfg.settings;
 
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf mkOption;
 in
 {
   options.looniversity.home-automation.zigbee2mqtt = {
@@ -35,13 +36,14 @@ in
 
     sops.templates."secret.yaml" = {
       content = ''
+        mqtt_password: ${config.sops.placeholder."zigbee2mqtt/mqtt_password"}
         network_key: ${config.sops.placeholder."zigbee2mqtt/network_key"}
       '';
     };
 
     services.zigbee2mqtt = {
       enable = true;
-      passwordFile = config.sops.secrets."zigbee2mqtt/mqtt_password".path;
+      # passwordFile = config.sops.secrets."zigbee2mqtt/mqtt_password".path;
 
       settings = {
         permit_join = true;
@@ -51,23 +53,28 @@ in
           base_topic = "zigbee2mqtt";
           user = "zigbee2mqtt";
         };
+
         serial = {
           port = "/dev/ttyUSB0";
           adapter = "zstack";
         };
+
         frontend = {
           enabled = true;
           port = 8080;
         };
+
         home_assistant = {
           enabled = true;
         };
+
         advanced = {
           homeassistant_legacy_entity_attributes = false;
           legacy_api = false;
           legacy_availability_payload = false;
           log_level = "info";
         };
+
         device_options = {
           legacy = false;
         };
