@@ -55,10 +55,9 @@ in
           { name = "dbadmin"; }
         ];
 
-      # authentication = mkOverride 10 ''
-      #   #type database  DBuser  auth-method optional_ident_map
-      #   local sameuser  all     peer        map=superuser_map
-      # '';
+      authentication = mkOverride 10 ''
+        host all  all     0.0.0.0/21        scram-sha-256
+      '';
 
       settings = {
         password_encryption = "scram-sha-256";
