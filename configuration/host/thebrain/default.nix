@@ -22,6 +22,11 @@ in
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     looniversity = {
+      home-automation = {
+        mosquitto = enabled;
+        zigbee2mqtt = enabled;
+      };
+
       media = {
         jellyfin = enabled;
       };
