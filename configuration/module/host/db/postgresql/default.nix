@@ -51,16 +51,25 @@ in
           ensureDBOwnership = true;
         }) cfg.databases)
         ++ [
-          { name = "sysadmin"; }
-          { name = "dbadmin"; }
+          {
+            name = "sysadmin";
+            ensureClauses = {
+              createdb = true;
+              login = true;
+            };
+          }
+          {
+            name = "dbadmin";
+            ensureClauses = {
+              createdb = true;
+              createrole = true;
+              login = true;
+            };
+          }
         ];
 
-      authentication = lib.mkForce ''
-        host  all  all       0.0.0.0/0      scram-sha-256
-        local all  postgres  peer           map=postgres
-        local all  all       peer
-        host  all  all       127.0.0.1/32   md5
-        host  all  all       ::1/128        md5
+      authentication = lib.mkOverride 10 ''
+        host  all  all       0.0.0.0/0      trust
       '';
 
       settings = {
