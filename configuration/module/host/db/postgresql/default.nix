@@ -49,10 +49,10 @@ in
           { name = "dbadmin"; }
         ];
 
-      authentication = mkOverride 10 ''
-        #type database  DBuser  auth-method optional_ident_map
-        local sameuser  all     peer        map=superuser_map
-      '';
+      # authentication = mkOverride 10 ''
+      #   #type database  DBuser  auth-method optional_ident_map
+      #   local sameuser  all     peer        map=superuser_map
+      # '';
 
       settings = {
         password_encryption = "scram-sha-256";
