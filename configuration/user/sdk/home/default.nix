@@ -125,6 +125,22 @@ in
         treefmt = enabled;
       };
 
+      editor = {
+        micro = enabled;
+        nixvim = enabled;
+        vscode = enabled // {
+          git = enabled;
+          just = enabled;
+          markdown = enabled;
+          nix = enabled;
+          python = enabled;
+          shellcheck = enabled;
+          toml = enabled;
+
+          theme.catppuccin = enabled;
+        };
+      };
+
       game = {
         openmw = enabled;
       };
@@ -156,34 +172,9 @@ in
         zathura = enabled;
       };
 
-      editor = {
-        micro = enabled;
-        nixvim = enabled;
-        vscode = enabled // {
-          git = enabled;
-          just = enabled;
-          markdown = enabled;
-          nix = enabled;
-          python = enabled;
-          shellcheck = enabled;
-          toml = enabled;
-
-          theme.catppuccin = enabled;
-        };
-      };
-
       keyboard = {
         input-remapper = disabled;
         hyper_super = enabled;
-      };
-
-      terminal = {
-        alacritty = enabled;
-        kitty = disabled;
-      };
-
-      tui = {
-        bagels = enabled;
       };
 
       media = {
@@ -244,6 +235,15 @@ in
         polkit-gnome = enabled;
         pywal = enabled;
         user-dirs = enabled;
+      };
+
+      terminal = {
+        alacritty = enabled;
+        kitty = disabled;
+      };
+
+      tui = {
+        bagels = enabled;
       };
 
       wayland = {
