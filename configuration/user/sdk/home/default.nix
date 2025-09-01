@@ -15,6 +15,7 @@ in
   imports = [
     ./accounts
     ./desktop
+    ./ssh
 
     ../../common
 

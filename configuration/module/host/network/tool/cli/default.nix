@@ -10,10 +10,6 @@ let
   inherit (lib) mkEnableOption mkIf;
 in
 {
-  imports = [
-    ./ssh
-  ];
-
   options.looniversity.network.tool.cli = {
     enable = mkEnableOption "networking tools";
   };

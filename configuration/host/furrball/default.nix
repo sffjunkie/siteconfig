@@ -55,6 +55,7 @@ in
       network = {
         tool = {
           cli = enabled;
+          ssh = enabled;
         };
       };
 
