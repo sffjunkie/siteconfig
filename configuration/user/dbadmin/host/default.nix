@@ -10,7 +10,7 @@ in
   config = {
     users.users.${username} = {
       isNormalUser = true;
-      uid = 999;
+      uid = 1002;
       description = "Database Administrator";
     };
   };
