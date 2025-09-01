@@ -16,10 +16,6 @@ in
 {
   options.looniversity.network.service.ssh = {
     enable = mkEnableOption "ssh";
-    askPassword = mkOption {
-      type = types.str;
-      default = "1";
-    };
   };
 
   config = mkIf cfg.enable {
