@@ -29,19 +29,14 @@ in
         };
 
         common = {
-          path_prefix = "/tmp/loki";
-          storage = {
-            filesystem = {
-              directory = "/tmp/loki/chunks";
-            };
-          };
-          replication_factor = 1;
           ring = {
             instance_addr = "127.0.0.1";
             kvstore = {
               store = "inmemory";
             };
           };
+          replication_factor = 1;
+          path_prefix = "/tmp/loki";
         };
 
         schema_config = {
