@@ -290,6 +290,7 @@ in
         port = "8081";
       };
 
+      # region Network
       coredns = {
         host = "pinky";
         port = 53;
@@ -298,15 +299,47 @@ in
         };
       };
 
+      traefik = {
+        host = "pinky";
+        ports = {
+          dashboard = 8080;
+        };
+      };
+
+      kea = {
+        host = "pinky";
+        port = 67;
+      };
+      # endregion
+
+      # region Monitoring
+
+      prometheus = {
+        # host = "thebrain";
+        host = "127.0.0.1";
+        port = 9100;
+      };
+
+      prometheus_node_exporter = {
+        host = "127.0.0.1";
+        port = 9101;
+      };
+
+      grafana = {
+        # host = "thebrain";
+        host = "127.0.0.1";
+        port = 9102;
+      };
+
+      loki = {
+        # host = "thebrain";
+        host = "127.0.0.1";
+        port = 9103;
+      };
+
       elasticsearch = {
         # host = "thebrain";
         host = "127.0.0.1";
-      };
-
-      gitea = {
-        # host = "thebrain";
-        host = "127.0.0.1";
-        port = 3000;
       };
 
       graylog = {
@@ -314,11 +347,56 @@ in
         host = "127.0.0.1";
         port = 9013;
       };
+      #endregion
 
+      gitea = {
+        # host = "thebrain";
+        host = "127.0.0.1";
+        port = 3000;
+      };
+
+      # region home-automation
       home-assistant = {
         # host = "thebrain";
         host = "127.0.0.1";
         port = 8123;
+      };
+
+      mosquitto = {
+        host = "10.44.1.1";
+      };
+
+      zigbee2mqtt = {
+        # host = "thebrain";
+        host = "127.0.0.1";
+        port = 8080;
+      };
+      # endregion
+
+      minio = {
+        host = "babs";
+        ports = {
+          listen = 9011;
+          console = 9012;
+        };
+      };
+
+      # region Database
+      postgresql = {
+        package = pkgs.postgresql_17;
+        host = "thebrain";
+        port = 5432;
+      };
+
+      mongodb = {
+        # host = "thebrain";
+        host = "127.0.0.1";
+      };
+      # endregion
+
+      nextcloud = {
+        # host = "thebrain";
+        host = "127.0.0.1";
       };
 
       homepage-dashboard = {
@@ -333,49 +411,10 @@ in
         };
       };
 
-      kea = {
-        host = "pinky";
-        port = 67;
-      };
-
-      minio = {
-        host = "babs";
-        ports = {
-          listen = 9011;
-          console = 9012;
-        };
-      };
-
-      mongodb = {
-        # host = "thebrain";
-        host = "127.0.0.1";
-      };
-
-      mosquitto = {
-        host = "10.44.1.1";
-      };
-
-      nextcloud = {
-        # host = "thebrain";
-        host = "127.0.0.1";
-      };
-
       portainer = {
         # host = "thebrain";
         host = "127.0.0.1";
         port = 9000;
-      };
-
-      postgresql = {
-        package = pkgs.postgresql_17;
-        host = "thebrain";
-        port = 5432;
-      };
-
-      prometheus = {
-        # host = "thebrain";
-        host = "127.0.0.1";
-        port = 9153;
       };
 
       step-ca = {
@@ -383,19 +422,6 @@ in
       };
 
       syncthing.host = "babs";
-
-      traefik = {
-        host = "pinky";
-        ports = {
-          dashboard = 8080;
-        };
-      };
-
-      zigbee2mqtt = {
-        # host = "thebrain";
-        host = "127.0.0.1";
-        port = 8080;
-      };
     };
   };
 }
