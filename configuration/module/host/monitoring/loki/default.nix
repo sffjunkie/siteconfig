@@ -28,8 +28,6 @@ in
       extraFlags = [ "--server.http-listen-port=${toString port}" ];
     };
 
-    networking.firewall.allowedTCPPorts = [
-      port
-    ];
+    networking.firewall.allowedTCPPorts = [ port ];
   };
 }
