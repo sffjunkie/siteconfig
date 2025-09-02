@@ -33,6 +33,7 @@ in
 
       monitoring = {
         grafana = enabled;
+        loki = enabled;
         prometheus = enabled;
       };
 
