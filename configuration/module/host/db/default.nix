@@ -1,6 +1,5 @@
 {
   imports = [
-    ./influxdb
     ./mongodb
     ./postgresql
   ];

@@ -37,7 +37,6 @@ in
       };
 
       service = {
-        influxdb = enabled;
         mongodb = enabled;
         nextcloud = disabled;
         postgresql = enabled;
