@@ -8,6 +8,7 @@
 }:
 let
   cfg = config.looniversity.monitoring.grafana;
+  port = 2342;
 
   inherit (lib) mkEnableOption mkIf;
 in
@@ -22,11 +23,13 @@ in
       settings = {
         server = {
           domain = "grafana.${lib.network.domainName config}";
-          port = 2342;
-          addr = "127.0.0.1";
+          http_port = port;
+          http_addr = "127.0.0.1";
         };
       };
     };
+
+    networking.firewall.allowedTCPPorts = [ port ];
 
     # services.nginx = {
     #   virtualHosts.${config.services.grafana.domain} = {
