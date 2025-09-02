@@ -31,14 +31,17 @@ in
         jellyfin = enabled;
       };
 
+      monitoring = {
+        grafana = enabled;
+        prometheus = enabled;
+      };
+
       role = {
         log_server = enabled;
         server = enabled;
       };
 
       service = {
-        grafana = enabled;
-        prometheus = enabled;
         mongodb = enabled;
         nextcloud = disabled;
         postgresql = enabled;
