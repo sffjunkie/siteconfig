@@ -8,7 +8,7 @@
 }:
 let
   cfg = config.looniversity.monitoring.prometheus;
-  port = 9001;
+  port = lib.network.serviceHandlerMainPort config "prometheus";
 
   inherit (lib) mkEnableOption mkIf;
 in

@@ -8,7 +8,7 @@
 }:
 let
   cfg = config.looniversity.monitoring.loki;
-  port = 9002;
+  port = lib.network.serviceHandlerMainPort config "loki";
 
   inherit (lib) mkEnableOption mkIf;
 in

@@ -8,7 +8,7 @@
 }:
 let
   cfg = config.looniversity.monitoring.grafana;
-  port = 2342;
+  port = lib.network.serviceHandlerMainPort config "grafana";
 
   inherit (lib) mkEnableOption mkIf;
 in
