@@ -26,6 +26,10 @@ in
           http_port = port;
           http_addr = "127.0.0.1";
         };
+
+        analytics = {
+          reporting_enabled = false;
+        };
       };
     };
 
