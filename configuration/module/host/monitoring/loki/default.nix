@@ -58,6 +58,12 @@ in
             }
           ];
         };
+
+        storage_config = {
+          filesystem = {
+            directory = "/tmp/loki/chunks";
+          };
+        };
       };
       extraFlags = [ "--server.http-listen-port=${toString port}" ];
     };
