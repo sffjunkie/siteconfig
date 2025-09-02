@@ -37,6 +37,8 @@ in
       };
 
       service = {
+        grafana = enabled;
+        prometheus = enabled;
         mongodb = enabled;
         nextcloud = disabled;
         postgresql = enabled;
@@ -47,6 +49,12 @@ in
       theme = {
         stylix = enabled;
       };
+    };
+
+    services.prometheus.exporters.node = {
+      enable = true;
+      enabledCollectors = [ "systemd" ];
+      port = 9002;
     };
 
     system.stateVersion = "23.05"; # Did you read the comment?
