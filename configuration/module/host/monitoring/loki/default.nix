@@ -24,18 +24,24 @@ in
         auth_enabled = false;
 
         server = {
-          http_listen_port = 3100;
+          http_listen_port = port;
+          grpc_listen_port = 9096;
         };
 
         common = {
+          path_prefix = "/tmp/loki";
+          storage = {
+            filesystem = {
+              directory = "/tmp/loki/chunks";
+            };
+          };
+          replication_factor = 1;
           ring = {
             instance_addr = "127.0.0.1";
             kvstore = {
               store = "inmemory";
             };
           };
-          replication_factor = 1;
-          path_prefix = "/tmp/loki";
         };
 
         schema_config = {
@@ -51,12 +57,6 @@ in
               };
             }
           ];
-        };
-
-        storage_config = {
-          filesystem = {
-            directory = "/tmp/loki/chunks";
-          };
         };
 
         analytics = {
