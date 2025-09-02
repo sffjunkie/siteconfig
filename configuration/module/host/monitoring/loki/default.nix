@@ -8,7 +8,7 @@
 }:
 let
   cfg = config.looniversity.monitoring.loki;
-  port = lib.network.serviceHandlerMainPort config "loki";
+  port = lib.traceVal (lib.network.serviceHandlerMainPort config "loki");
 
   inherit (lib) mkEnableOption mkIf;
 in
@@ -28,6 +28,8 @@ in
       extraFlags = [ "--server.http-listen-port=${toString port}" ];
     };
 
-    networking.firewall.allowedTCPPorts = [ port ];
+    networking.firewall.allowedTCPPorts = [
+      port
+    ];
   };
 }
