@@ -20,6 +20,11 @@ in
   config = mkIf cfg.enable {
     services.loki = {
       enable = true;
+      configuration = {
+        analytics = {
+          reporting_enabled = false;
+        };
+      };
       extraFlags = [ "--server.http-listen-port=${toString port}" ];
     };
 
