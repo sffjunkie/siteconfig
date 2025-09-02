@@ -20,7 +20,7 @@ in
   config = mkIf cfg.enable {
     services.loki = {
       enable = true;
-      extraFlags = [ "--server.http-listen-port=${port}" ];
+      extraFlags = [ "--server.http-listen-port=${toString port}" ];
     };
 
     networking.firewall.allowedTCPPorts = [ port ];
