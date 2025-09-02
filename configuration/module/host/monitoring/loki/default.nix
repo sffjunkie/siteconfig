@@ -51,16 +51,6 @@ in
                 period = "24h";
               };
             }
-            {
-              from = "2020-05-15";
-              store = "tsdb";
-              object_store = "filesystem";
-              schema = "v13";
-              index = {
-                prefix = "index_";
-                period = "24h";
-              };
-            }
           ];
         };
 
@@ -70,7 +60,10 @@ in
           };
         };
       };
-      extraFlags = [ "--server.http-listen-port=${toString port}" ];
+      extraFlags = [
+        "--server.http-listen-port=${toString port}"
+        "-validation.allow-structured-metadata=false"
+      ];
     };
 
     networking.firewall.allowedTCPPorts = [ port ];
