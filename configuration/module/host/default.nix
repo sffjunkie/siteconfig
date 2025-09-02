@@ -11,6 +11,7 @@
     ./home-automation
     ./keyboard
     ./media
+    ./monitoring
     ./network
     ./script
     ./service
