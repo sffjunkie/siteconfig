@@ -58,10 +58,6 @@ in
             }
           ];
         };
-
-        analytics = {
-          reporting_enabled = false;
-        };
       };
       extraFlags = [ "--server.http-listen-port=${toString port}" ];
     };
