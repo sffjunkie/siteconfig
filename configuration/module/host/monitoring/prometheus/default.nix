@@ -8,6 +8,7 @@
 }:
 let
   cfg = config.looniversity.monitoring.prometheus;
+  port = 9001;
 
   inherit (lib) mkEnableOption mkIf;
 in
@@ -19,7 +20,9 @@ in
   config = mkIf cfg.enable {
     services.prometheus = {
       enable = true;
-      port = 9001;
+      port = port;
     };
+
+    networking.firewall.allowedTCPPorts = [ port ];
   };
 }
