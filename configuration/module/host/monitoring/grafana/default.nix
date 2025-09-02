@@ -19,9 +19,13 @@ in
   config = mkIf cfg.enable {
     services.grafana = {
       enable = true;
-      domain = "grafana.${lib.network.domainName config}";
-      port = 2342;
-      addr = "127.0.0.1";
+      settings = {
+        server = {
+          domain = "grafana.${lib.network.domainName config}";
+          port = 2342;
+          addr = "127.0.0.1";
+        };
+      };
     };
 
     # services.nginx = {
