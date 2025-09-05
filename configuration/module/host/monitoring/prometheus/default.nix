@@ -20,6 +20,18 @@ in
     services.prometheus = {
       enable = true;
       port = port;
+
+      scrapeConfigs = [
+        {
+          job_name = "prometheus";
+          scrape_interval = "5s";
+          static_configs = [
+            {
+              targets = [ "localhost:${port}" ];
+            }
+          ];
+        }
+      ];
     };
 
     networking.firewall.allowedTCPPorts = [ port ];
