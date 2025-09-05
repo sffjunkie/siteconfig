@@ -1,4 +1,3 @@
-# ports: 27017 - 27020
 {
   config,
   lib,
