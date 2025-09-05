@@ -27,7 +27,7 @@ in
           scrape_interval = "5s";
           static_configs = [
             {
-              targets = [ "localhost:${port}" ];
+              targets = [ "localhost:${toString port}" ];
             }
           ];
         }
