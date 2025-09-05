@@ -26,7 +26,7 @@ in
         server = {
           domain = "grafana.${lib.network.domainName config}";
           http_port = port;
-          http_addr = "127.0.0.1";
+          http_addr = host;
         };
 
         analytics = {
@@ -40,7 +40,7 @@ in
     services.nginx = lib.mkIf nginxCfg.enable {
       virtualHosts.${config.services.grafana.settings.server.domain} = {
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.http_port}";
+          proxyPass = "http://${host}:${toString config.services.grafana.settings.server.http_port}";
           proxyWebsockets = true;
         };
       };
