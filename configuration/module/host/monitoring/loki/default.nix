@@ -71,7 +71,7 @@ in
 
         storage_config = {
           filesystem = {
-            directory = "${config.services.loki.dataDir}/chunks";
+            directory = "/var/lib/loki/chunks";
           };
 
           tsdb_shipper = {
