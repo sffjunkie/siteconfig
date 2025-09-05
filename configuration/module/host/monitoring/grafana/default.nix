@@ -8,6 +8,7 @@
 }:
 let
   cfg = config.looniversity.monitoring.grafana;
+  host = lib.network.serviceHandlerHost config "grafana";
   port = lib.network.serviceHandlerMainPort config "grafana";
 
   inherit (lib) mkEnableOption mkIf;
@@ -35,13 +36,13 @@ in
 
     networking.firewall.allowedTCPPorts = [ port ];
 
-    # services.nginx = {
-    #   virtualHosts.${config.services.grafana.domain} = {
-    #     locations."/" = {
-    #       proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
-    #       proxyWebsockets = true;
-    #     };
-    #   };
-    # };
+    services.nginx = {
+      virtualHosts.${config.services.grafana.domain} = {
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
+          proxyWebsockets = true;
+        };
+      };
+    };
   };
 }
