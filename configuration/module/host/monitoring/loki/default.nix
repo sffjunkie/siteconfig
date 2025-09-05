@@ -32,7 +32,6 @@ in
           lifecycler = {
             address = "127.0.0.1";
             ring = {
-              # instance_addr = "127.0.0.1";
               kvstore = {
                 store = "inmemory";
               };
@@ -64,21 +63,9 @@ in
         };
 
         limits_config = {
-          # enforce_metric_name = false;
           reject_old_samples = true;
           reject_old_samples_max_age = "168h";
         };
-
-        # storage_config = {
-        #   filesystem = {
-        #     directory = "/var/lib/loki/chunks";
-        #   };
-
-        #   tsdb_shipper = {
-        #     active_index_directory = "${config.services.loki.dataDir}/tsdb-index";
-        #     cache_location = "${config.services.loki.dataDir}/tsdb-cache";
-        #   };
-        # };
 
         query_scheduler = {
           max_outstanding_requests_per_tenant = 32768;
@@ -92,9 +79,6 @@ in
           reporting_enabled = false;
         };
       };
-      # extraFlags = [
-      #   "-validation.allow-structured-metadata=false"
-      # ];
     };
 
     networking.firewall.allowedTCPPorts = [ port ];
