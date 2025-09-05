@@ -60,7 +60,7 @@ in
     // Use the targets with labels from the discovery.relabel component
     targets    = discovery.relabel.integrations_node_exporter.output
     // Send the scraped metrics to the relabeling component
-    forward_to = [prometheus.remote_write.local.receiver]
+    forward_to = [prometheus.remote_write.looniversity.receiver]
   }
 
 
@@ -79,7 +79,7 @@ in
     // Apply relabeling rules to the logs
     relabel_rules = discovery.relabel.logs_integrations_integrations_node_exporter_journal_scrape.rules
     // Send logs to the local Loki instance
-    forward_to    = [loki.write.local.receiver]
+    forward_to    = [loki.write.looniversity.receiver]
   }
 
   // Define which log files to collect for node_exporter
