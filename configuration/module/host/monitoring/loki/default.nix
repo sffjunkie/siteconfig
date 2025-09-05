@@ -44,9 +44,9 @@ in
           chunk_retain_period = "30s";
         };
 
-        # common = {
-        #   path_prefix = "/tmp/loki";
-        # };
+        common = {
+          path_prefix = config.services.loki.dataDir;
+        };
 
         schema_config = {
           configs = [
@@ -69,16 +69,16 @@ in
           reject_old_samples_max_age = "168h";
         };
 
-        storage_config = {
-          filesystem = {
-            directory = "/var/lib/loki/chunks";
-          };
+        # storage_config = {
+        #   filesystem = {
+        #     directory = "/var/lib/loki/chunks";
+        #   };
 
-          tsdb_shipper = {
-            active_index_directory = "${config.services.loki.dataDir}/tsdb-index";
-            cache_location = "${config.services.loki.dataDir}/tsdb-cache";
-          };
-        };
+        #   tsdb_shipper = {
+        #     active_index_directory = "${config.services.loki.dataDir}/tsdb-index";
+        #     cache_location = "${config.services.loki.dataDir}/tsdb-cache";
+        #   };
+        # };
 
         query_scheduler = {
           max_outstanding_requests_per_tenant = 32768;
