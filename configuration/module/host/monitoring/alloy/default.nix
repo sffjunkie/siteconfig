@@ -10,6 +10,13 @@ let
   lokiHost = lib.network.serviceHandlerHost config "loki";
   lokiPort = lib.network.serviceHandlerMainPort config "loki";
 
+  envFile = pkgs.writeTextFile {
+    name = "alloy.env";
+    text = ''
+      CUSTOM_ARGS=--server.http.listen-addr=0.0.0.0:${toString port}
+    '';
+  };
+
   configDebugging = ''
     livedebugging{}
   '';
@@ -61,6 +68,7 @@ in
     services.alloy = {
       enable = true;
       configPath = "${toString configFile}";
+      environmentFile = "${toString envFile}";
     };
     networking.firewall.allowedTCPPorts = [ port ];
   };
