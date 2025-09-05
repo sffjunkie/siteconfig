@@ -65,7 +65,7 @@ in
 
 
   // Define where to send the metrics for storage
-  prometheus.remote_write "local" {
+  prometheus.remote_write "looniversity" {
     endpoint {
       // Send metrics to a locally running Prometheus instance
       url = "http://${prometheusHost}:${toString prometheusPort}/api/v1/write"
