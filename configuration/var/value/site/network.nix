@@ -313,27 +313,26 @@ in
       # endregion
 
       # region Monitoring
-
-      prometheus = {
+      grafana = {
         # host = "thebrain";
         host = "10.44.0.2";
         port = 9100;
       };
 
-      grafana = {
+      prometheus = {
         # host = "thebrain";
         host = "10.44.0.2";
         port = 9101;
+      };
+
+      alloy = {
+        port = 9103;
       };
 
       loki = {
         # host = "thebrain";
         host = "10.44.0.2";
         port = 9102;
-      };
-
-      alloy = {
-        port = 9103;
       };
 
       elasticsearch = {
