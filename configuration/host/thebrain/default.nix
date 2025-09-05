@@ -33,9 +33,9 @@ in
 
       monitoring = {
         grafana = enabled;
+        alloy = enabled;
         loki = enabled;
         prometheus = enabled;
-        alloy = enabled;
       };
 
       role = {
