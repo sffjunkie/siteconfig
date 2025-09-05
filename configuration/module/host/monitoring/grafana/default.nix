@@ -27,6 +27,7 @@ in
           domain = "grafana.${lib.network.domainName config}";
           http_port = port;
           http_addr = host;
+          protocol = "https";
         };
 
         analytics = {
