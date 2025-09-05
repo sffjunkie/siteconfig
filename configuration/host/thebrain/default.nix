@@ -56,11 +56,7 @@ in
       };
     };
 
-    services.prometheus.exporters.node = {
-      enable = true;
-      enabledCollectors = [ "systemd" ];
-      port = 9002;
-    };
+    services.nginx.enable = true;
 
     system.stateVersion = "23.05"; # Did you read the comment?
   };
