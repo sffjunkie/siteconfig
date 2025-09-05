@@ -71,17 +71,30 @@ in
 
         storage_config = {
           filesystem = {
-            directory = "/tmp/loki/chunks";
+            directory = "${config.services.loki.dataDir}/chunks";
           };
+
+          tsdb_shipper = {
+            active_index_directory = "${config.services.loki.dataDir}/tsdb-index";
+            cache_location = "${config.services.loki.dataDir}/tsdb-cache";
+          };
+        };
+
+        query_scheduler = {
+          max_outstanding_requests_per_tenant = 32768;
+        };
+
+        querier = {
+          max_concurrent = 16;
         };
 
         analytics = {
           reporting_enabled = false;
         };
       };
-      extraFlags = [
-        "-validation.allow-structured-metadata=false"
-      ];
+      # extraFlags = [
+      #   "-validation.allow-structured-metadata=false"
+      # ];
     };
 
     networking.firewall.allowedTCPPorts = [ port ];
