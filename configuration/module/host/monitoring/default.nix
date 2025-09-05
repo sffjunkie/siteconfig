@@ -3,5 +3,6 @@
     ./grafana
     ./loki
     ./prometheus
+    ./promtail
   ];
 }
