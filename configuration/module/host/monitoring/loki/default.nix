@@ -28,16 +28,25 @@ in
           grpc_listen_port = 9096;
         };
 
-        common = {
-          ring = {
-            instance_addr = "127.0.0.1";
-            kvstore = {
-              store = "inmemory";
+        ingester = {
+          lifecycler = {
+            address = "127.0.0.1";
+            ring = {
+              instance_addr = "127.0.0.1";
+              kvstore = {
+                store = "inmemory";
+              };
+              replication_factor = 1;
             };
+            final_sleep = "0s";
           };
-          replication_factor = 1;
-          path_prefix = "/tmp/loki";
+          chunk_idle_period = "5m";
+          chunk_retain_period = "30s";
         };
+
+        # common = {
+        #   path_prefix = "/tmp/loki";
+        # };
 
         schema_config = {
           configs = [
@@ -54,14 +63,23 @@ in
           ];
         };
 
+        limits_config = {
+          enforce_metric_name = false;
+          reject_old_samples = true;
+          reject_old_samples_max_age = "168h";
+        };
+
         storage_config = {
           filesystem = {
             directory = "/tmp/loki/chunks";
           };
         };
+
+        analytics = {
+          reporting_enabled = false;
+        };
       };
       extraFlags = [
-        "--server.http-listen-port=${toString port}"
         "-validation.allow-structured-metadata=false"
       ];
     };
