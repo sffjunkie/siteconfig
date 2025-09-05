@@ -315,17 +315,20 @@ in
       # region Monitoring
 
       prometheus = {
-        host = "thebrain";
+        # host = "thebrain";
+        host = "10.44.0.2";
         port = 9100;
       };
 
       grafana = {
-        host = "thebrain";
+        # host = "thebrain";
+        host = "10.44.0.2";
         port = 9101;
       };
 
       loki = {
-        host = "thebrain";
+        # host = "thebrain";
+        host = "10.44.0.2";
         port = 9102;
       };
 
@@ -380,7 +383,8 @@ in
       # region Database
       postgresql = {
         package = pkgs.postgresql_17;
-        host = "thebrain";
+        # host = "thebrain";
+        host = "10.44.0.2";
         port = 5432;
       };
 
