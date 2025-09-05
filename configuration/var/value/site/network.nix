@@ -273,7 +273,7 @@ in
       dns.handlerName = "coredns";
       git.handlerName = "gitea";
       home-automation.handlerName = "home-assistant";
-      log.handlerName = "graylog";
+      log.handlerName = "loki";
       metrics.handlerName = "prometheus";
       music.handlerName = "jellyfin";
       proxy.handlerName = "traefik";
@@ -315,25 +315,21 @@ in
       # region Monitoring
 
       prometheus = {
-        # host = "thebrain";
-        host = "127.0.0.1";
+        host = "thebrain";
         port = 9100;
       };
 
-      prometheus_node_exporter = {
-        host = "127.0.0.1";
+      grafana = {
+        host = "thebrain";
         port = 9101;
       };
 
-      grafana = {
-        # host = "thebrain";
-        host = "127.0.0.1";
+      loki = {
+        host = "thebrain";
         port = 9102;
       };
 
-      loki = {
-        # host = "thebrain";
-        host = "127.0.0.1";
+      alloy = {
         port = 9103;
       };
 
