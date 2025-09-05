@@ -7,6 +7,7 @@
   config = {
     sopsFiles = {
       default = ./secrets.yaml;
+      home-automation = ./home-automation.yaml;
       network = ./network.yaml;
       service = ./service.yaml;
       tool = ./tool.yaml;
