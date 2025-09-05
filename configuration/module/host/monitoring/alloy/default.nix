@@ -14,7 +14,7 @@ let
     livedebugging{}
   '';
 
-  loki = lib.traceVal ''
+  loki = ''
     loki.write "looniversity" {
         endpoint {
             url = "http://${lokiHost}:${toString lokiPort}/loki/api/v1/push"
@@ -22,21 +22,21 @@ let
     }
   '';
 
-  metrics = pkgs.callPackage ./metrics.nix { inherit lib; };
-  logs = pkgs.callPackage ./logs.nix { inherit lib; };
+  metrics = pkgs.callPackage ./metrics.nix { inherit config lib; };
+  logs = pkgs.callPackage ./logs.nix { inherit config lib; };
 
   alloyConfigElems = [
     loki
     logs
     metrics
-    (lib.optional cfg.livedebug configDebugging)
-  ];
+  ]
+  ++ lib.optional cfg.livedebug configDebugging;
 
-  alloyConfig = (lib.concatStringsSep "\n" alloyConfigElems);
+  alloyConfig = lib.concatStringsSep "\n" alloyConfigElems;
 
   configFile = pkgs.writeTextFile {
     name = "alloy_config";
-    text = (lib.traceVal alloyConfig);
+    text = alloyConfig;
   };
 
   inherit (lib)

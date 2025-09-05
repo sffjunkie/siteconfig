@@ -5,8 +5,6 @@
   ...
 }:
 let
-  handler = lib.traceVal (lib.network.serviceHandler config "prometheus");
-  # prometheusHost = handler.host;
   prometheusHost = lib.network.serviceHandlerHost config "prometheus";
   prometheusPort = lib.network.serviceHandlerMainPort config "prometheus";
 in
