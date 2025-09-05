@@ -35,6 +35,7 @@ in
         grafana = enabled;
         loki = enabled;
         prometheus = enabled;
+        alloy = enabled;
       };
 
       role = {

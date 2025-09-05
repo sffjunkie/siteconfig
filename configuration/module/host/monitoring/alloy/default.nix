@@ -2,18 +2,19 @@
   config,
   lib,
   pkgs,
-  types,
   ...
 }:
 let
   cfg = config.looniversity.monitoring.alloy;
   port = lib.network.serviceHandlerMainPort config "alloy";
+  lokiHost = lib.network.serviceHandlerHost config "loki";
+  lokiPort = lib.network.serviceHandlerMainPort config "loki";
 
   configDebugging = ''
     livedebugging{}
   '';
 
-  loki = ''
+  loki = lib.traceVal ''
     loki.write "looniversity" {
         endpoint {
             url = "http://${lokiHost}:${toString lokiPort}/loki/api/v1/push"
@@ -21,18 +22,29 @@ let
     }
   '';
 
+  metrics = pkgs.callPackage ./metrics.nix { inherit lib; };
+  logs = pkgs.callPackage ./logs.nix { inherit lib; };
+
   alloyConfigElems = [
     loki
-    (import ./logs.nix)
-    (import ./metrics.nix)
-  ]
-  ++ (lib.optional cfg.livedebug configDebugging);
+    logs
+    metrics
+    (lib.optional cfg.livedebug configDebugging)
+  ];
 
-  alloyConfig = lib.concatStringsSep "\n" alloyConfig;
+  alloyConfig = (lib.concatStringsSep "\n" alloyConfigElems);
 
-  configFile = pkgs.writeText "alloy_config" alloyConfig;
+  configFile = pkgs.writeTextFile {
+    name = "alloy_config";
+    text = (lib.traceVal alloyConfig);
+  };
 
-  inherit (lib) mkEnableOption mkIf mkOption;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    mkOption
+    types
+    ;
 in
 {
   options.looniversity.monitoring.alloy = {
@@ -40,7 +52,7 @@ in
     livedebug = mkOption {
       type = types.bool;
       default = false;
-      decription = "Enable live debugging";
+      description = "Enable live debugging";
     };
     zfsSupport = mkEnableOption "alloy_zfs";
   };
