@@ -25,14 +25,14 @@ in
 
         server = {
           http_listen_port = port;
-          grpc_listen_port = 9096;
+          # grpc_listen_port = 9096;
         };
 
         ingester = {
           lifecycler = {
             address = "127.0.0.1";
             ring = {
-              instance_addr = "127.0.0.1";
+              # instance_addr = "127.0.0.1";
               kvstore = {
                 store = "inmemory";
               };
@@ -64,7 +64,7 @@ in
         };
 
         limits_config = {
-          enforce_metric_name = false;
+          # enforce_metric_name = false;
           reject_old_samples = true;
           reject_old_samples_max_age = "168h";
         };
