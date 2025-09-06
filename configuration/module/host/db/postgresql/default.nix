@@ -40,7 +40,7 @@ in
 
     services.postgresql = {
       enable = true;
-      package = pgPackage;
+      package = lib.mkForce pgPackage;
 
       enableTCPIP = true;
 
