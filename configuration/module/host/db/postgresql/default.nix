@@ -68,8 +68,8 @@ in
           }
         ];
 
-      authentication = lib.mkOverride 10 ''
-        host  all  all       0.0.0.0/0      trust
+      authentication = ''
+        host    all     all       0.0.0.0/0       scram-sha-256
       '';
 
       settings = {
