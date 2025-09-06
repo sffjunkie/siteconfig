@@ -36,14 +36,5 @@ in
     };
 
     networking.firewall.allowedTCPPorts = [ port ];
-
-    services.nginx = lib.mkIf nginxCfg.enable {
-      virtualHosts.${config.services.grafana.settings.server.domain} = {
-        locations."/" = {
-          proxyPass = "http://${host}:${toString config.services.grafana.settings.server.http_port}";
-          proxyWebsockets = true;
-        };
-      };
-    };
   };
 }
