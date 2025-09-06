@@ -22,6 +22,7 @@ in
       port = port;
 
       scrapeConfigs = [
+        # Scrape internal prometheus stats
         {
           job_name = "prometheus";
           scrape_interval = "5s";
