@@ -9,6 +9,8 @@ let
   port = lib.network.serviceHandlerMainPort config "alloy";
   lokiHost = lib.network.serviceHandlerHost config "loki";
   lokiPort = lib.network.serviceHandlerMainPort config "loki";
+  prometheusHost = lib.network.serviceHandlerHost config "prometheus";
+  prometheusPort = lib.network.serviceHandlerMainPort config "prometheus";
 
   envFile = pkgs.writeTextFile {
     name = "alloy.env";
@@ -16,10 +18,6 @@ let
       CUSTOM_ARGS=--server.http.listen-addr=0.0.0.0:${toString port}
     '';
   };
-
-  configDebugging = ''
-    livedebugging{}
-  '';
 
   loki = ''
     loki.write "looniversity" {
@@ -29,11 +27,24 @@ let
     }
   '';
 
-  metrics = pkgs.callPackage ./metrics.nix { inherit config lib; };
+  prometheus = ''
+    prometheus.remote_write "looniversity" {
+      endpoint {
+        url = "http://${prometheusHost}:${toString prometheusPort}/api/v1/write"
+      }
+    }
+  '';
+
   logs = pkgs.callPackage ./logs.nix { inherit config lib; };
+  metrics = pkgs.callPackage ./metrics.nix { inherit config lib; };
+
+  configDebugging = ''
+    livedebugging{}
+  '';
 
   alloyConfigElems = [
     loki
+    prometheus
     logs
     metrics
   ]
