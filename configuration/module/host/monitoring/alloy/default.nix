@@ -81,6 +81,7 @@ in
       configPath = "${toString configFile}";
       environmentFile = "${toString envFile}";
     };
+
     networking.firewall.allowedTCPPorts = [ port ];
   };
 }
