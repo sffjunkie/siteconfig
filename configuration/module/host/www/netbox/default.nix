@@ -35,27 +35,5 @@ in
         AUTH_PASSWORD_VALIDATORS = [ ];
       };
     };
-
-    services.nginx = {
-      enable = true;
-
-      user = "netbox";
-      recommendedTlsSettings = true;
-      clientMaxBodySize = "25m";
-
-      virtualHosts."${config.networking.fqdn}" = {
-        locations = {
-          "/" = {
-            # proxyPass = "http://0.0.0.0:8001";
-            proxyPass = "http://${config.services.netbox.listenAddress}:${toString config.services.netbox.port}";
-          };
-          "/static/" = {
-            root = "${config.services.netbox.dataDir}";
-          };
-        };
-        # forceSSL = true;
-        serverName = "${config.networking.fqdn}";
-      };
-    };
   };
 }
