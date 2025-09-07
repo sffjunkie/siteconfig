@@ -40,5 +40,7 @@ in
         enableVectors = false;
       };
     };
+
+    looniversity.service.postgresql.databases = [ "immich" ];
   };
 }
