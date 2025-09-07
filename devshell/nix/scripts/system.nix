@@ -68,16 +68,14 @@ let
         ;;
 
       boot)
-        sudo
-        header "$1"
+        sudo header "$1"
         sudo nixos-rebuild boot --flake ".#''${target}" \
           --impure --log-format internal-json "''${extra_args[@]}" |& \
           ${pkgs.nix-output-monitor}/bin/nom --json
         ;;
 
       switch)
-        sudo
-        header "$1"
+        sudo header "$1"
         sudo nixos-rebuild switch --flake ".#''${target}" \
           --impure --log-format internal-json "''${extra_args[@]}" |& \
           ${pkgs.nix-output-monitor}/bin/nom --json
