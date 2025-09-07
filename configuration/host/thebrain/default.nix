@@ -45,8 +45,11 @@ in
 
       service = {
         mongodb = enabled;
-        nextcloud = disabled;
         postgresql = enabled;
+
+        immich = enabled;
+        netbox = disabled;
+        nextcloud = disabled;
       };
 
       shell.zsh = enabled;

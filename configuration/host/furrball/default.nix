@@ -69,11 +69,6 @@ in
 
       script.wake = enabled;
 
-      service = {
-        immich = disabled;
-        netbox = disabled;
-      };
-
       shell.zsh = enabled;
 
       storage = {
