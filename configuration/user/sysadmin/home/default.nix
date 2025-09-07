@@ -22,6 +22,7 @@ in
 
     looniversity = {
       cli = {
+        bat = enabled;
         zoxide = enabled;
       };
       shell = {
