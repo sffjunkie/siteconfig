@@ -11,7 +11,7 @@
     path_targets = [{
       __address__ = "localhost",
       __path__    = "/var/log/{syslog,messages,*.log}",
-      instance    = constants.hostname,
+      node        = constants.hostname,
       job         = "integrations/node_exporter",
     }]
   }
@@ -32,6 +32,11 @@
   // Define relabeling rules for systemd journal logs
   discovery.relabel "${node}_journal" {
     targets = []
+
+    rule {
+      source_labels = ["__journal__hostname"]
+      target_label  = "node"
+    }
 
     rule {
       source_labels = ["__journal__systemd_unit"]

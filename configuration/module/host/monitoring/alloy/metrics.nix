@@ -37,7 +37,7 @@
     targets = prometheus.exporter.unix.${node}_node_exporter.targets
 
     rule {
-      target_label = "instance"
+      target_label = "node"
       replacement  = constants.hostname
     }
 
