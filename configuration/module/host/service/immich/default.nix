@@ -43,6 +43,12 @@ in
       };
     };
 
-    looniversity.service.postgresql.databases = [ "immich" ];
+    looniversity = {
+      mount = {
+        pictures = enabled;
+      };
+
+      service.postgresql.databases = [ "immich" ];
+    };
   };
 }
