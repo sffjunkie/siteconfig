@@ -5,7 +5,7 @@
   ...
 }:
 let
-  cfg = config.looniversity.service.postgresql;
+  cfg = config.looniversity.db.postgresql;
   pgPackage = lib.network.serviceServiceHandlerPackage config "postgresql";
 
   inherit (lib)
@@ -17,7 +17,7 @@ let
     ;
 in
 {
-  options.looniversity.service.postgresql = {
+  options.looniversity.db.postgresql = {
     enable = mkEnableOption "postgresql";
 
     databases = mkOption {

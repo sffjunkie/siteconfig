@@ -7,12 +7,12 @@
   ...
 }:
 let
-  cfg = config.looniversity.service.mongodb;
+  cfg = config.looniversity.db.mongodb;
 
   inherit (lib) mkEnableOption mkIf;
 in
 {
-  options.looniversity.service.mongodb = {
+  options.looniversity.db.mongodb = {
     enable = mkEnableOption "mongodb";
   };
 

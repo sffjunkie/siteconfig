@@ -36,10 +36,12 @@ in
         server = enabled;
       };
 
-      service = {
+      db = {
         mongodb = enabled;
         postgresql = enabled;
+      };
 
+      service = {
         immich = enabled;
         netbox = disabled;
         nextcloud = disabled;
