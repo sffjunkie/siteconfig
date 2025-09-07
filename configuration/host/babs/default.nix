@@ -85,6 +85,10 @@ in
         };
       };
 
+      monitoring = {
+        alloy = enabled;
+      };
+
       storage = {
         minio = {
           enable = true;
