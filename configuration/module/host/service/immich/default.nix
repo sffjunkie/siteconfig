@@ -36,6 +36,8 @@ in
         host = postgresql_hostname;
         name = "immich";
         user = "immich";
+
+        enableVectors = false;
       };
     };
   };
