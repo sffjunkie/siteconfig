@@ -39,7 +39,10 @@ let
     inherit config lib;
     node = config.looniversity.monitoring.alloy.node;
   };
-  metrics = pkgs.callPackage ./metrics.nix { inherit config lib; };
+  metrics = pkgs.callPackage ./metrics.nix {
+    inherit config lib;
+    node = config.looniversity.monitoring.alloy.node;
+  };
 
   configDebugging = ''
     livedebugging{}

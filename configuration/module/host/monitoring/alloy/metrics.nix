@@ -2,11 +2,12 @@
   config,
   lib,
   pkgs,
+  node ? "unknown",
   ...
 }:
 ''
   // Configure the node_exporter integration to collect system metrics
-  prometheus.exporter.unix "integrations_node_exporter" {
+  prometheus.exporter.unix "${node}_node_exporter" {
     // Disable unnecessary collectors to reduce overhead
     disable_collectors = ["ipvs", "btrfs", "infiniband", "xfs", "zfs"]
     enable_collectors = ["meminfo"]
@@ -32,8 +33,8 @@
   }
 
   // This block relabels metrics coming from node_exporter to add standard labels
-  discovery.relabel "integrations_node_exporter" {
-    targets = prometheus.exporter.unix.integrations_node_exporter.targets
+  discovery.relabel "${node}_node_exporter" {
+    targets = prometheus.exporter.unix.${node}_node_exporter.targets
 
     rule {
       target_label = "instance"
@@ -47,9 +48,9 @@
   }
 
   // Define how to scrape metrics from the node_exporter
-  prometheus.scrape "integrations_node_exporter" {
+  prometheus.scrape "${node}_node_exporter" {
     scrape_interval = "15s"
-    targets    = discovery.relabel.integrations_node_exporter.output
+    targets    = discovery.relabel.${node}_node_exporter.output
     forward_to = [prometheus.remote_write.looniversity.receiver]
   }
 ''
