@@ -10,6 +10,11 @@
           user = "sysadmin";
           identityFile = [ "~/.ssh/id_ed25519.sysadmin" ];
         };
+        "babs" = {
+          hostname = "10.44.0.3";
+          user = "sysadmin";
+          identityFile = [ "~/.ssh/id_ed25519.sysadmin" ];
+        };
       };
     };
   };
