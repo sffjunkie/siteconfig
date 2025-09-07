@@ -27,6 +27,7 @@ in
 
     services.immich = {
       enable = true;
+      host = "0.0.0.0";
       port = 2283;
       openFirewall = true;
       secretsFile = config.sops.templates."immich_env_file".path;
