@@ -21,6 +21,10 @@ in
       enable = true;
       port = port;
 
+      extraFlags = [
+        "--web.enable-remote-write-receiver"
+      ];
+
       scrapeConfigs = [
         # Scrape internal prometheus stats
         {
