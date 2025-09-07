@@ -43,37 +43,32 @@ let
     fi
 
     COLUMNS=$(tput cols)
-    case "$1" in
-      build)
+
+    header() {
         ${pkgs.figlet}/bin/figlet \
           -d "${pkgs.figlet}/share/figlet" \
           -f doom \
           -w "''${COLUMNS}" \
-          "$target  :  build''${extra_info}"
+          "$target  :  $1''${extra_info}"
+    }
 
+    case "$1" in
+      build)
+        header "$1"
         nixos-rebuild build --flake ".#''${target}" \
           --impure --log-format internal-json "''${extra_args[@]}" |& \
           ${pkgs.nix-output-monitor}/bin/nom --json
         ;;
 
       dry-build)
-        ${pkgs.figlet}/bin/figlet \
-          -d "${pkgs.figlet}/share/figlet" \
-          -f doom \
-          -w "''${COLUMNS}" \
-          "$target  :  dry build''${extra_info}"
-
+        header "$1"
         nixos-rebuild dry-build --flake ".#''${target}" \
           --impure --log-format internal-json "''${extra_args[@]}" |& \
           ${pkgs.nix-output-monitor}/bin/nom --json
         ;;
 
       boot)
-        sudo ${pkgs.figlet}/bin/figlet \
-          -d "${pkgs.figlet}/share/figlet" \
-          -f doom \
-          -w "''${COLUMNS}" \
-          "$target  :  boot''${extra_info}"
+        header "$1"
 
         sudo nixos-rebuild boot --flake ".#''${target}" \
           --impure --log-format internal-json "''${extra_args[@]}" |& \
@@ -81,12 +76,7 @@ let
         ;;
 
       switch)
-        sudo ${pkgs.figlet}/bin/figlet \
-          -d "${pkgs.figlet}/share/figlet" \
-          -f doom \
-          -w "''${COLUMNS}" \
-          "$target  :  switch''${extra_info}"
-
+        header "$1"
         sudo nixos-rebuild switch --flake ".#''${target}" \
           --impure --log-format internal-json "''${extra_args[@]}" |& \
           ${pkgs.nix-output-monitor}/bin/nom --json
