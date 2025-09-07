@@ -71,7 +71,7 @@ in
 
       service = {
         immich = disabled;
-        netbox = enabled;
+        netbox = disabled;
       };
 
       shell.zsh = enabled;
