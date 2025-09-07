@@ -15,6 +15,8 @@ in
     ./hardware.nix
     ./networking.nix
 
+    ./settings
+
     ../common
   ];
 
