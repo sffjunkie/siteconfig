@@ -55,7 +55,7 @@ in
       };
     };
 
-    looniversity.service.postgresql = {
+    looniversity.db.postgresql = {
       enable = true;
       databases = [ config.services.nextcloud.config.dbname ];
     };
