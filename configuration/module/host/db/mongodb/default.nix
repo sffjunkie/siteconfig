@@ -19,7 +19,14 @@ in
   config = mkIf cfg.enable {
     services.mongodb = {
       enable = true;
-      # bind_ip = "0.0.0.0";
+      bind_ip = "0.0.0.0";
     };
+
+    networking.firewall.allowedTCPPortRanges = [
+      {
+        from = 27017;
+        to = 27020;
+      }
+    ];
   };
 }
