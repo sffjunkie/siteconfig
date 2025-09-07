@@ -86,7 +86,9 @@ in
       };
 
       monitoring = {
-        alloy = enabled;
+        alloy = enabled // {
+          node = "babs";
+        };
       };
 
       storage = {
