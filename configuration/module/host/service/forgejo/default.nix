@@ -49,6 +49,6 @@ in
       };
     };
 
-    looniversity.service.postgresql.databases = "forgejo";
+    looniversity.service.postgresql.databases = [ "forgejo" ];
   };
 }
