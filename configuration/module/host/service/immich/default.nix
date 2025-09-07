@@ -48,7 +48,7 @@ in
         pictures = enabled;
       };
 
-      service.postgresql.databases = [ "immich" ];
+      db.postgresql.databases = [ "immich" ];
     };
   };
 }
