@@ -35,7 +35,10 @@ let
     }
   '';
 
-  logs = pkgs.callPackage ./logs.nix { inherit config lib; };
+  logs = pkgs.callPackage ./logs.nix {
+    inherit config lib;
+    node = config.looniversity.monitoring.alloy.node;
+  };
   metrics = pkgs.callPackage ./metrics.nix { inherit config lib; };
 
   configDebugging = ''
@@ -67,12 +70,15 @@ in
 {
   options.looniversity.monitoring.alloy = {
     enable = mkEnableOption "alloy";
+    node = mkOption {
+      type = types.str;
+      default = "unknown";
+    };
     livedebug = mkOption {
       type = types.bool;
       default = false;
       description = "Enable live debugging";
     };
-    zfsSupport = mkEnableOption "alloy_zfs";
   };
 
   config = mkIf cfg.enable {

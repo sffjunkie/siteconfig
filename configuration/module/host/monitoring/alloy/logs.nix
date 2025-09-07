@@ -2,11 +2,12 @@
   config,
   lib,
   pkgs,
+  node ? "unknown",
   ...
 }:
 ''
   // Define which log files to collect for node_exporter
-  local.file_match "logs_integrations_integrations_node_exporter_direct_scrape" {
+  local.file_match "${node}_log" {
     path_targets = [{
       __address__ = "localhost",
       __path__    = "/var/log/{syslog,messages,*.log}",
@@ -16,20 +17,20 @@
   }
 
   // Collect logs from files for node_exporter
-  loki.source.file "logs_integrations_integrations_node_exporter_direct_scrape" {
-    targets    = local.file_match.logs_integrations_integrations_node_exporter_direct_scrape.targets
+  loki.source.file "${node}_log" {
+    targets    = local.file_match.${node}_log.targets
     forward_to = [loki.write.looniversity.receiver]
   }
 
   // Collect logs from systemd journal for node_exporter
-  loki.source.journal "logs_integrations_integrations_node_exporter_journal_scrape" {
+  loki.source.journal "${node}_journal" {
     max_age       = "24h0m0s"
-    relabel_rules = discovery.relabel.logs_integrations_integrations_node_exporter_journal_scrape.rules
+    relabel_rules = discovery.relabel.${node}_journal.rules
     forward_to    = [loki.write.looniversity.receiver]
   }
 
   // Define relabeling rules for systemd journal logs
-  discovery.relabel "logs_integrations_integrations_node_exporter_journal_scrape" {
+  discovery.relabel "${node}_journal" {
     targets = []
 
     rule {

@@ -42,7 +42,9 @@ in
       };
 
       monitoring = {
-        alloy = enabled;
+        alloy = enabled // {
+          node = "thebrain";
+        };
       };
 
       service = {
