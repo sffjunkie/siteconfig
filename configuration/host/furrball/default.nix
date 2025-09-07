@@ -49,6 +49,7 @@ in
         backup = enabled;
         movies = enabled;
         music = enabled;
+        pictures = enabled;
         private = enabled;
       };
 
