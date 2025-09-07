@@ -41,6 +41,10 @@ in
         postgresql = enabled;
       };
 
+      monitoring = {
+        alloy = enabled;
+      };
+
       service = {
         immich = enabled;
         netbox = disabled;

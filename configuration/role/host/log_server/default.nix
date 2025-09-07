@@ -18,7 +18,6 @@ in
     looniversity = {
       monitoring = {
         grafana = enabled;
-        alloy = enabled;
         loki = enabled;
         prometheus = enabled;
       };
