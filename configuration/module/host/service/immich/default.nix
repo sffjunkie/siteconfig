@@ -7,7 +7,7 @@
 let
   cfg = config.looniversity.service.immich;
   postgresqlHost = lib.network.serviceHandlerHost config "postgresql";
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) enabled mkEnableOption mkIf;
 in
 {
   options.looniversity.service.immich = {
