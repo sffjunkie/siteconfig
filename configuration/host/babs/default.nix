@@ -44,6 +44,10 @@ in
               description = "Movies";
             }
             {
+              path = "/tank0/pictures";
+              description = "Pictures";
+            }
+            {
               path = "/tank1/private";
               description = "Private";
             }
