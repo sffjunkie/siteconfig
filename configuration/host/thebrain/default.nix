@@ -31,13 +31,6 @@ in
         jellyfin = enabled;
       };
 
-      monitoring = {
-        grafana = enabled;
-        alloy = enabled;
-        loki = enabled;
-        prometheus = enabled;
-      };
-
       role = {
         log_server = enabled;
         server = enabled;
