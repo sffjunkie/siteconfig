@@ -93,7 +93,7 @@
 
               sharedModules = [
                 inputs.sops-nix.homeManagerModules.sops
-                inputs.nixvim.homeManagerModules.nixvim
+                inputs.nixvim.homeModules.nixvim
               ];
             };
           };
