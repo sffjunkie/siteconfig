@@ -32,12 +32,11 @@ in
       '';
     };
 
-    home.packages =
-      [
-        pkgs.ffmpeg
-      ]
-      ++ lib.optionals (config.programs.alacritty.enable) [
-        pkgs.ueberzugpp
-      ];
+    home.packages = [
+      pkgs.ffmpeg
+    ]
+    ++ lib.optionals (config.programs.alacritty.enable) [
+      pkgs.ueberzugpp
+    ];
   };
 }

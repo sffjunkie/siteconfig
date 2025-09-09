@@ -68,7 +68,8 @@ in
           };
           address = [ "${lanIp}/${toString config.looniversity.network.prefixLength}" ];
         };
-      } // vlanNetworks;
+      }
+      // vlanNetworks;
     };
   };
 }

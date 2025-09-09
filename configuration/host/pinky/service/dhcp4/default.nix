@@ -58,7 +58,8 @@ in
               name = "domain-name-servers";
               data = [
                 config.looniversity.network.nameServer
-              ] ++ config.looniversity.network.extraNameServers;
+              ]
+              ++ config.looniversity.network.extraNameServers;
             }
             {
               name = "routers";
@@ -92,7 +93,8 @@ in
               #   }
               # ];
             }
-          ] ++ vlanDHCP;
+          ]
+          ++ vlanDHCP;
         };
       };
     };
