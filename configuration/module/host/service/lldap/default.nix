@@ -43,6 +43,8 @@ in
         database_url = "sqlite:////var/lib/lldap/lldap.db?mode=rwc";
         ldap_user_dn = "admin";
         ldap_user_email = "sdk@looniversity.lan";
+        ldap_user_pass_file = config.sops.secrets."lldap/admin_password".path;
+        force_ldap_user_pass_reset = "always";
       };
 
       environmentFile = config.sops.templates."lldap_env_file".path;
