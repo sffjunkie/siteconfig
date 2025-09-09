@@ -5,7 +5,7 @@
 # - Adding a 'skip' attribute to a test skips it
 # - Adding a 'skipIf' attribute skips the test if the attribute value is Trueish
 # - Requires a reference to `lib` to be passed to the `run` function
-{ lib, ... }:
+{ lib, ns, ... }:
 let
   # Function `run` takes a Attribute set as an argument
   # The only required attribute is 'dir' the directory to load tests from.

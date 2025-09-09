@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, ns, ... }:
 let
   # getToolModule :: attrSet -> str -> str
   # Gets a hosts network device given an alias

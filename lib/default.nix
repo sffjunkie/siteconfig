@@ -1,6 +1,7 @@
 {
   lib,
   inputs,
+  ns,
   ...
 }:
 final: prev: {
@@ -11,9 +12,9 @@ final: prev: {
     enable = false;
   };
 
-  deploy = import ./deploy.nix { inherit lib inputs; };
-  ipv4 = import ./ipv4.nix { inherit lib; };
-  network = import ./network.nix { inherit lib; };
-  tool = import ./tool.nix { inherit lib; };
-  test = import ./test.nix { inherit lib; };
+  deploy = import ./deploy.nix { inherit lib ns inputs; };
+  ipv4 = import ./ipv4.nix { inherit lib ns; };
+  network = import ./network.nix { inherit lib ns; };
+  tool = import ./tool.nix { inherit lib ns; };
+  test = import ./test.nix { inherit lib ns; };
 }

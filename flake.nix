@@ -66,7 +66,8 @@
       ...
     }@inputs:
     let
-      lib = nixpkgs.lib.extend (import ./lib { inherit lib inputs; });
+      ns = "looniversity";
+      lib = nixpkgs.lib.extend (import ./lib { inherit lib ns inputs; });
 
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -88,7 +89,7 @@
               useUserPackages = true;
 
               extraSpecialArgs = {
-                inherit inputs;
+                inherit ns inputs;
               };
 
               sharedModules = [
@@ -104,7 +105,7 @@
         { modules, ... }:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit lib;
+            inherit lib ns;
           };
 
           modules = modules ++ hostCommonModules ++ homeCommonModules;
@@ -120,7 +121,7 @@
         nixos-generators.nixosGenerate {
           inherit format system;
           specialArgs = {
-            inherit lib;
+            inherit lib ns;
           };
 
           modules = modules ++ hostCommonModules ++ homeCommonModules;
@@ -262,7 +263,7 @@
         in
         lib.test.run {
           dir = ./test;
-          inherit lib pkgs; # Needed by test functions
+          inherit lib pkgs ns; # Needed by test functions
           # Optional attrs
           # include = ".*_test\.nix";
           # exclude = "";

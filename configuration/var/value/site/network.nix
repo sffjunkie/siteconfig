@@ -2,10 +2,10 @@
   config,
   lib,
   pkgs,
+  ns,
   ...
 }:
 let
-  ns = "looniversity";
   domainName = "${ns}.net";
   ldapParts = lib.splitString "." domainName;
   ldapDCParts = map (elem: "dc=" + elem) ldapParts;

@@ -1,6 +1,6 @@
 {
   lib,
-  ns ? "looniversity",
+  ns,
   ...
 }:
 let

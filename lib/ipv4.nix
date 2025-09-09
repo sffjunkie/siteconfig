@@ -1,4 +1,8 @@
-{ lib, ... }:
+{
+  lib,
+  ns,
+  ...
+}:
 let
   # ipv4Octets = str -> list[int]
   # Convert an IPv4 address into a list of octets.
