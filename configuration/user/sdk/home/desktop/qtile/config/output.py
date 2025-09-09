@@ -45,10 +45,12 @@ class Outputs:
     outputs: list[Output]
 
 
-def wlr_randr() -> Outputs:
+def wlr_randr() -> Outputs | None:
     cp = Popen(  # type: ignore
         ["wlr-randr", "--json"],
         capture_output=True,
     )
-    data = json.loads(cp.stdout)
+    if cp.stdout is None:
+        return None
+    data = json.loads(cp.stdout.read())
     return Outputs(**data)
