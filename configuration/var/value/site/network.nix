@@ -12,7 +12,7 @@ let
   ldapBaseDN = lib.concatStringsSep "," ldapDCParts;
 in
 {
-  config.looniversity.network = {
+  config."${ns}".network = {
     networkAddress = "10.44.0.0";
     prefixLength = 21;
     domainName = domainName;
