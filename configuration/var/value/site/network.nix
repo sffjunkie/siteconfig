@@ -16,7 +16,7 @@ in
     networkAddress = "10.44.0.0";
     prefixLength = 21;
     domainName = domainName;
-    ldapBaseDN = lib.traceVal ldapBaseDN;
+    ldapBaseDN = ldapBaseDN;
     nameServer = "10.44.0.1";
     extraNameServers = [
       "8.8.8.8"
