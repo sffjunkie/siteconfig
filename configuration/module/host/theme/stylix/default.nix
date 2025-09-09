@@ -8,12 +8,6 @@
 let
   cfg = config.looniversity.theme.stylix;
 
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [
-      "Hack"
-    ];
-  };
-
   inherit (lib) mkDefault mkEnableOption mkIf;
 in
 {
