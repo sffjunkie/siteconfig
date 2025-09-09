@@ -356,7 +356,7 @@ in
       # region home-automation
       home-assistant = {
         # host = "thebrain";
-        host = "127.0.0.1";
+        host = "10.44.0.2";
         port = 8123;
       };
 
@@ -366,7 +366,7 @@ in
 
       zigbee2mqtt = {
         # host = "thebrain";
-        host = "127.0.0.1";
+        host = "10.44.0.2";
         port = 8080;
       };
       # endregion
