@@ -64,7 +64,7 @@ in
       MOZ_ENABLE_WAYLAND = "1";
       XDG_SESSION_TYPE = "wayland";
       XDG_CURRENT_DESKTOP = "qtile";
-      SDL_VIDEODRIVER = "wayland,windows,x11";
+      SDL_VIDEODRIVER = "wayland,x11";
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       _JAVA_AWT_WM_NONREPARENTING = "1";
