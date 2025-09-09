@@ -6,13 +6,17 @@
 }:
 let
   ns = "looniversity";
+  domainName = "${ns}.net";
+  ldapParts = lib.splitString "." domainName;
+  ldapDCParts = map (elem: "dc=" + elem) ldapParts;
+  ldapBaseDN = lib.concatStringsSep "," ldapDCParts;
 in
 {
   config.looniversity.network = {
     networkAddress = "10.44.0.0";
     prefixLength = 21;
-    domainName = "${ns}.net";
-    ldapRoot = "dc=${ns},dc=net";
+    domainName = domainName;
+    ldapBaseDN = lib.traceVal ldapBaseDN;
     nameServer = "10.44.0.1";
     extraNameServers = [
       "8.8.8.8"

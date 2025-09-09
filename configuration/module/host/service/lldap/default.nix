@@ -30,7 +30,6 @@ in
       content = ''
         LLDAP_KEY_SEED=${config.sops.placeholder."lldap/key_seed"}
         LLDAP_JWT_SECRET=${config.sops.placeholder."lldap/jwt"}
-        LLDAP_LDAP_USER_PASS=${config.sops.placeholder."lldap/admin_password"}
       '';
     };
 
@@ -39,7 +38,7 @@ in
 
       settings = {
         http_url = "http://ldap.looniversity.net";
-        ldap_base_dn = "dc=looniversity,dc=net";
+        ldap_base_dn = config.looniversity.network.ldapBaseDN;
         database_url = "sqlite:////var/lib/lldap/lldap.db?mode=rwc";
         ldap_user_dn = "admin";
         ldap_user_email = "sdk@looniversity.lan";

@@ -173,7 +173,7 @@ in
       description = "The main IP domain name";
     };
 
-    ldapRoot = mkOption {
+    ldapBaseDN = mkOption {
       type = types.str;
       default = "";
       description = "LDAP root";
