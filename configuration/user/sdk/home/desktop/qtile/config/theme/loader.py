@@ -101,7 +101,7 @@ def load_theme(filepath: Path | None = None) -> Theme:
 
     named_colors = _theme_named_colors(theme_yaml, default_theme_yaml)
     # logger.warning(f"named_colors: {named_colors}")
-    tc = _deref_colors(named_colors, base16_colors, named_colors)
+    tc = _deref_colors(dict(named_colors), base16_colors, named_colors)
     # named_colors.update(tc)
     # logger.warning(f"tc: {tc}")
 
